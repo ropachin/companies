@@ -1,5 +1,6 @@
 <?php
 $mysql = new mysqli('localhost', 'temp_user', 'temp_password', 'companies');
+$mysql->set_charset("utf8mb4");
 if ($mysql->errno) {
     echo 'Произошла ошибка подключения к Базе Данных';
     exit;
