@@ -1,0 +1,35 @@
+:root {
+    --body-color-bg: #21262d;
+    --header-color-bg: #0d1117;
+    --logo-color: #ffc134;
+}
+
+
+*::selection {
+    background-color: transparent;
+}
+
+body {
+    background-color: var(--body-color-bg);
+    margin: 0;
+    color: #fff;
+}
+
+header {
+    background-color: var(--header-color-bg);
+    height: 50px;
+    line-height: 50px;
+}
+
+#header-logo {
+    color: var(--logo-color);
+    font-size: 38px;
+    font-family: system-ui;
+    letter-spacing: 1px;
+}
+
+#header-logo>span {
+    color: var(--header-color-bg);
+    background-color: var(--logo-color);
+    font-weight: 600;
+}
