@@ -1,3 +1,9 @@
 <header>
     <span id="header-logo">ТЕСТОВОЕ <span>ЗАД</span>АНИЕ</span>
+    <nav>
+        <a href="#">Компании</a>
+        <span>Войти</span>
+        <span>Зарегестрироваться</span>
+        </span>
+    </nav>
 </header>

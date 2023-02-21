@@ -1,0 +1,1 @@
+CREATE TABLE `companies`.`companies` ( `id` INT(6) NOT NULL , `name` VARCHAR(50) NOT NULL COMMENT 'Название' , `TIN` INT(10) NULL COMMENT 'ИНН' , `info` VARCHAR(500) NULL COMMENT 'Общая информация' , `CEO` VARCHAR(50) NULL COMMENT 'Генеральный директор' , `address` VARCHAR(255) NULL COMMENT 'Адрес' , `tel` INT(11) NULL COMMENT 'Телефон' ) ENGINE = InnoDB;
