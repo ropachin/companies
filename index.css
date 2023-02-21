@@ -4,7 +4,7 @@
     justify-content: space-evenly;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    padding: 50px 20px;
+    margin-bottom: 25px;
 }
 
 /* Карточка компании */
@@ -12,6 +12,7 @@
     background-color: #2e353e;
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 0 0 4px #00000090;
 }
 
 .catalog-company-card>hr {
@@ -25,4 +26,9 @@
 .catalog-company-card>*>span,
 .catalog-company-card-name {
     color: var(--logo-color)
+}
+
+/* Кнопка, "Новая компания" */
+#new_company_btn {
+    display: none;
 }

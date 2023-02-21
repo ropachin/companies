@@ -42,12 +42,17 @@ class CompanyCard {
 
 // КОНСТАНТЫ И ПЕРЕМЕННЫЕ
 const COMPANIES_CATALOG = document.getElementById('catalog'); // Блок со списком компаний
+// const 
 
 
 // Получить список компаний (AJAX)
 const XHR = new XMLHttpRequest();
 XHR.open('GET', 'server/get_company.php');
 XHR.send();
+// Заглушка загрузки
+XHR.onloadstart = function(){
+    
+}
 XHR.onload = function () {
     // Полученный json с данными о компании парсим в обьект OBJ
     const COMPANY_DATA = JSON.parse(XHR.response);

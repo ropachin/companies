@@ -9,9 +9,22 @@
     background-color: transparent;
 }
 
+.default-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: var(--logo-color);
+    color: #000;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
 a {
     color: inherit;
     text-decoration: none;
+}
+
+main{
+    padding: 50px 20px;
 }
 
 body {
@@ -19,6 +32,7 @@ body {
     margin: 0;
     color: #fff;
     font-family: system-ui;
+    min-height: 100vh;
 }
 
 /* Шапка */
@@ -55,10 +69,10 @@ header>nav {
 }
 
 /* Каждый кликабельный элемент в правой части шапки*/
-header>nav>*{
+header>nav>* {
     cursor: pointer;
 }
 
-header>nav>*:hover{
+header>nav>*:hover {
     color: #fff;
 }

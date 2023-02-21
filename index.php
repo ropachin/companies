@@ -10,8 +10,10 @@
 
 <body>
     <?php require 'inc/header' ?>
-    <div id="catalog">
-    </div>
+    <main>
+        <div id="catalog"></div>
+        <a href="#" class="default-btn" id="new_company_btn">Новая компания</a>
+    </main>
 </body>
 
 </html>
