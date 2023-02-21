@@ -1,18 +1,22 @@
-// Блок со списком компаний
-const COMPANIES_CATALOG = document.getElementById('catalog');
-
-// Класс для создания карточек компаний в списке
+// Класс для создания карточек компаний в списке (принимает response обьект с даннsми компании с сервера)
 class CompanyCard {
-    // Конструктор принимает полученный с сервере обьект компании создаём блоки в DOM и заполняет их.
+    // Свойсва класса (используемые данные компании)
+    name; TIN; info; CEO; address; tel;
+    // Конструктор принимает полученный с сервера обьект компании
     constructor(responseObj) {
+        this.name = responseObj.name;
         this.TIN = responseObj.TIN;
         this.info = responseObj.info;
         this.CEO = responseObj.CEO;
         this.address = responseObj.address;
         this.tel = responseObj.tel;
-        // Создать DOM елементы
+    }
+    // Метод для построения и внедрения полученных данных в DOM страницы
+    add(PARENT) {
+        // Создать HTML елементы
         const CARD = document.createElement('div');
         const NAME = document.createElement('p');
+        const HR = document.createElement('hr');
         const TIN = document.createElement('p');
         const ADDRESS = document.createElement('p');
         const TEL = document.createElement('p');
@@ -25,15 +29,20 @@ class CompanyCard {
         TEL.classList.add('catalog-company-card-tel');
         CEO.classList.add('catalog-company-card-CEO');
         // Заполнить блоки <p> с отдельными данными о компании
-        NAME.innerHTML = responseObj.name;
-        TIN.innerHTML = '<span>ИНН:</span> ' + responseObj.TIN;
-        ADDRESS.innerHTML = '<span>Адрес:</span> ' + responseObj.address;
-        TEL.innerHTML = '<span>Телефон:</span> ' + responseObj.tel;
+        NAME.textContent = this.name;
+        TIN.innerHTML = '<span>ИНН:</span> ' + this.TIN;
+        ADDRESS.innerHTML = '<span>Адрес:</span> ' + this.address;
+        TEL.innerHTML = '<span>Телефон:</span> ' + this.tel;
+        CEO.innerHTML = '<span>Генеральный директор:</span> ' + this.CEO;
         // Поместить все блоки с данными в карточку компании, а эту карточку в блок всех каталога карточек
-        CARD.append(NAME, TIN, ADDRESS, TEL);
-        document.body.append(CARD);
+        CARD.append(NAME, HR, TIN, ADDRESS, TEL, CEO);
+        PARENT.append(CARD);
     }
 }
+
+// КОНСТАНТЫ И ПЕРЕМЕННЫЕ
+const COMPANIES_CATALOG = document.getElementById('catalog'); // Блок со списком компаний
+
 
 // Получить список компаний (AJAX)
 const XHR = new XMLHttpRequest();
@@ -45,7 +54,11 @@ XHR.onload = function () {
     // Массивом создаём карточки для всех компаний
     for (getCompany of COMPANY_DATA) {
         // Создаём экземпляр класса для создания карточки компании
-        const COMPANY_CARD = new CompanyCard(getCompany);
+        const COMPANY = new CompanyCard(getCompany);
+        /* Так как мы создали свой класс, мы можем изменить нужные свойсва компании перед вызовом метода add()
+        Пример: [COMPANY_CARD.name = 'Альфабет'], но в данном случае, ничего менять не будем.
+        Метод add() - внедряет данные в тело страницы, принимает DOM елемент в котором будут строиться карточки компаний*/
+        COMPANY.add(COMPANIES_CATALOG);
     }
 }
 

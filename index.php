@@ -1,8 +1,3 @@
-<?php
-require 'inc/db_connect';
-
-$mysql->close();
-?>
 <!DOCTYPE html>
 <html lang="ru">
 

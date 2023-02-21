@@ -1,3 +1,28 @@
-#catalog{
-    background-color: red;
+/* Блок содержащий карточки компаний */
+#catalog {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 50px 20px;
+}
+
+/* Карточка компании */
+.catalog-company-card {
+    background-color: #2e353e;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.catalog-company-card>hr {
+    border-color: #434b54;
+}
+
+.catalog-company-card-name {
+    text-align: center;
+}
+
+.catalog-company-card>*>span,
+.catalog-company-card-name {
+    color: var(--logo-color)
 }
