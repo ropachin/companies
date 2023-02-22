@@ -42,21 +42,18 @@ class CompanyCard {
 
 // КОНСТАНТЫ И ПЕРЕМЕННЫЕ
 const COMPANIES_CATALOG = document.getElementById('catalog'); // Блок со списком компаний
-// const 
-
-
+// Переменная будет хранить обьект всех компаний в Базе Данных
+let all_companies;
 // Получить список компаний (AJAX)
 const XHR = new XMLHttpRequest();
 XHR.open('GET', 'server/get_company.php');
 XHR.send();
 // Заглушка загрузки
-XHR.onloadstart = function(){
-    
-}
+// XHR.onloadstart = function () {}
 XHR.onload = function () {
     // Полученный json с данными о компании парсим в обьект OBJ
-    const COMPANY_DATA = JSON.parse(XHR.response);
-    // Массивом создаём карточки для всех компаний
+    const COMPANY_DATA = all_companies = JSON.parse(XHR.response);
+    // Циклом создаём карточки для всех компаний
     for (getCompany of COMPANY_DATA) {
         // Создаём экземпляр класса для создания карточки компании
         const COMPANY = new CompanyCard(getCompany);
@@ -67,4 +64,60 @@ XHR.onload = function () {
     }
 }
 
+// ПОИСК
+// Меню поиска
+const SEARCH_LIST = document.querySelectorAll('#header-search-icon>div>ul>li');
+// Окно поиска
+const SEARCH_BLOCK = document.getElementById('search-block');
+// Форма ввода поиска
+const SEARCH_INPUT = SEARCH_BLOCK.querySelector('input')
+for (elem of SEARCH_LIST) {
+    elem.onclick = function () {
+        // Отобразить форму поиска
+        SEARCH_BLOCK.style.display = 'grid';
+        // Отслеживание кликов мышки, что-бы скрыть форму
+        SEARCH_BLOCK.addEventListener('click', hide_search);
+        // Выполнение поиска (передать условие поиска)
+        search_company(this.getAttribute('search'));
+    }
+}
+
+// Функция для отслеживания события и скрытия блока поиска или при начале поиска
+function hide_search() {
+    SEARCH_BLOCK.onclick = SEARCH_BLOCK.onsubmit = e => {
+        // Если кликнуть вне окна - форма скроется
+        if (e.target == SEARCH_BLOCK) {
+            this.style.display = 'none';
+            // Очистить форму поиска
+            SEARCH_INPUT.value = '';
+            // Удалить отслеживание
+            SEARCH_BLOCK.removeEventListener('click', hide_search);
+        }
+    }
+}
+
+// Функция выполняющая поиск компаний
+function search_company(search = 'name') {
+    // Событие на каждый ввод в поисковую строку
+    SEARCH_INPUT.oninput = function () {
+        // Очистить блок каталога
+        COMPANIES_CATALOG.innerHTML = null;
+        // Циклом пройтись по всем сущесвующим компаниям
+        for (company of all_companies) {
+            // Если надо найти по имени
+            if (search == 'name') {
+                // Проверяем есть ли сопадение в имени с введённым текстом поиска
+                // Или строка поиска пуста
+                if (!company.name.toLocaleLowerCase().includes(this.value.toLocaleLowerCase())) continue;
+            }
+            // Если надо найти по ИНН
+            else if (search == 'TIN') {
+                // Проверка с начала строки
+                if (!company.TIN.startsWith(this.value)) continue;
+            }
+            const COMPANY = new CompanyCard(company);
+            COMPANY.add(COMPANIES_CATALOG);
+        }
+    }
+}
 

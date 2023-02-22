@@ -1,9 +1,26 @@
 <header>
     <span id="header-logo">ТЕСТОВОЕ <span>ЗАД</span>АНИЕ</span>
     <nav>
-        <a href="#">Компании</a>
+        <div id="header-search-icon">
+            <div>
+                <ul>
+                    <li search="name">По Имени</li>
+                    <li search="TIN">По ИНН</li>
+                </ul>
+            </div>
+        </div>
+        <span>Компании</span>
         <span>Войти</span>
         <span>Зарегестрироваться</span>
         </span>
     </nav>
 </header>
+
+<form id="search-block" filter-type="">
+    <fieldset>
+        <legend>Поиск</legend>
+        <p>Введите название компании</p>
+        <input type="search">
+        <button type="button" class="default-btn">Поиск</button>
+    </fieldset>
+</form>
