@@ -3,6 +3,6 @@
         <legend>Поиск</legend>
         <p>Введите название компании</p>
         <input type="search">
-        <button type="button" class="default-btn">Поиск</button>
+        <button type="button" class="default-btn">Закрыть</button>
     </fieldset>
 </form>

@@ -82,6 +82,8 @@ const SEARCH_LIST = document.querySelectorAll('#header-search-icon>div>ul>li');
 const SEARCH_BLOCK = document.getElementById('search-block');
 // Форма ввода поиска
 const SEARCH_INPUT = SEARCH_BLOCK.querySelector('input')
+// Кнопка "Закрыть" в поиске
+const SEARCH_CLOSE_BTN = SEARCH_BLOCK.querySelector('button');
 for (elem of SEARCH_LIST) {
     elem.onclick = function () {
         // Получить условие поиска из атрибута кнопки на которую нажал польхователь
@@ -100,15 +102,18 @@ for (elem of SEARCH_LIST) {
 
 // Функция для отслеживания события и скрытия блока поиска или при начале поиска
 function hide_search() {
-    SEARCH_BLOCK.onclick = SEARCH_BLOCK.onsubmit = e => {
+    SEARCH_CLOSE_BTN.onclick = hide;
+    SEARCH_BLOCK.onclick = e => {
         // Если кликнуть вне окна - форма скроется
-        if (e.target == SEARCH_BLOCK) {
-            this.classList.add('hidden')
-            // Очистить форму поиска
-            SEARCH_INPUT.value = '';
-            // Удалить отслеживание
-            SEARCH_BLOCK.removeEventListener('click', hide_search);
-        }
+        if (e.target == SEARCH_BLOCK) hide()
+    }
+    // Функция скрыть окно поика
+    function hide() {
+        SEARCH_BLOCK.classList.add('hidden')
+        // Очистить форму поиска
+        SEARCH_INPUT.value = '';
+        // Удалить отслеживание
+        SEARCH_BLOCK.removeEventListener('click', hide_search);
     }
 }
 
