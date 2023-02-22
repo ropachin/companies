@@ -1,19 +1,21 @@
 <header>
     <span id="header-logo">ТЕСТОВОЕ <span>ЗАД</span>АНИЕ</span>
     <nav>
+        <!-- Если текущая страница главная: -->
         <?php if (str_contains($_SERVER['SCRIPT_NAME'], 'index')) : ?>
             <div id="header-search-icon">
                 <div>
                     <ul>
-                        <li search="name">По Имени</li>
-                        <li search="TIN">По ИНН</li>
+                        <!-- Атрибута search указывают скрипту, что нужно искать -->
+                        <li class="default-link" search="name">По Имени</li>
+                        <li class="default-link" search="TIN">По ИНН</li>
                     </ul>
                 </div>
             </div>
         <?php endif ?>
-        <span>Компании</span>
-        <span>Войти</span>
-        <span>Зарегестрироваться</span>
+        <span class="default-link"><a href="/">Компании</a></span>
+        <span class="default-link">Войти</span>
+        <span class="default-link">Зарегестрироваться</span>
         </span>
     </nav>
 </header>

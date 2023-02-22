@@ -9,23 +9,31 @@
 
 /* Карточка компании */
 .catalog-company-card {
+    display: flex;
+    flex-direction: column;
     background-color: #2e353e;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 4px #00000090;
+    text-shadow: -1px 1px 1px #000;
 }
 
 .catalog-company-card>hr {
     border-color: #434b54;
 }
 
-.catalog-company-card-name {
-    text-align: center;
+.catalog-company-card>*>span {
+    color: var(--logo-color)
 }
 
-.catalog-company-card>*>span,
 .catalog-company-card-name {
-    color: var(--logo-color)
+    text-align: center;
+    color: var(--logo-color);
+}
+
+.catalog-company-card-comment {
+    text-align: end;
+    cursor: pointer;
 }
 
 /* Кнопка, "Новая компания" */
@@ -34,6 +42,6 @@
 }
 
 /* Кнопка "Показать все компании" */
-#show-all-companies-btn{
+#show-all-companies-btn {
     margin: 20px auto;
 }

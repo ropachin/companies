@@ -1,9 +1,10 @@
 // Класс для создания карточек компаний в списке (принимает response обьект с даннsми компании с сервера)
 class CompanyCard {
     // Свойсва класса (используемые данные компании)
-    name; TIN; info; CEO; address; tel;
+    id; name; TIN; info; CEO; address; tel;
     // Конструктор принимает полученный с сервера обьект компании
     constructor(responseObj) {
+        this.id = responseObj.id;
         this.name = responseObj.name;
         this.TIN = responseObj.TIN;
         this.info = responseObj.info;
@@ -21,6 +22,7 @@ class CompanyCard {
         const ADDRESS = document.createElement('p');
         const TEL = document.createElement('p');
         const CEO = document.createElement('p')
+        const COMMENT = document.createElement('p');
         // Классы для блоков
         CARD.classList.add('catalog-company-card');
         NAME.classList.add('catalog-company-card-name');
@@ -28,14 +30,19 @@ class CompanyCard {
         ADDRESS.classList.add('catalog-company-card-address');
         TEL.classList.add('catalog-company-card-tel');
         CEO.classList.add('catalog-company-card-CEO');
+        COMMENT.classList.add('catalog-company-card-comment');
+        COMMENT.classList.add('default-link');
         // Заполнить блоки <p> с отдельными данными о компании
         NAME.textContent = this.name;
         TIN.innerHTML = '<span>ИНН:</span> ' + this.TIN;
         ADDRESS.innerHTML = '<span>Адрес:</span> ' + this.address;
         TEL.innerHTML = '<span>Телефон:</span> ' + this.tel;
         CEO.innerHTML = '<span>Генеральный директор:</span> ' + this.CEO;
+        COMMENT.textContent = 'Оставить отзыв';
+        // Событие при нажатии на кнопку "Добавить коментарий"
+        COMMENT.onclick = () => add_comment(this.id);
         // Поместить все блоки с данными в карточку компании, а эту карточку в блок всех каталога карточек
-        CARD.append(NAME, HR, TIN, ADDRESS, TEL, CEO);
+        CARD.append(NAME, HR, TIN, ADDRESS, TEL, CEO, COMMENT);
         PARENT.append(CARD);
     }
 }
@@ -156,3 +163,7 @@ function search_company(searchTerm) {
 // Событие при нажатии на кнопку "Показать все компании"
 SHOW_ALL_COMPANIES_BTN.onclick = show_all_companies;
 
+// Функция: Показать форму ввода коментария к компании
+function add_comment(id) {
+    console.log(id);
+}
