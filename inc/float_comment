@@ -1,7 +1,7 @@
 <dialog id="comment-dialog">
     <h3></h3>
     <p>Оставьте отзыв</p>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <textarea cols="30" rows="10" required></textarea>
     <p id="comment-visibility-caption">Кто сможет видеть ваш отзыв?</p>
     <div id="comment-visibility-settings">
         <input type="radio" name="comment_visibility" value="all" id="comment-visibility-radio-all" checked>
@@ -45,6 +45,7 @@
         font-size: 18px;
         display: block;
         margin: 15px 0;
+        border-radius: 4px;
     }
 
     dialog>textarea:focus {

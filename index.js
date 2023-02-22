@@ -184,15 +184,39 @@ const COMMENT_CLOSE_BTN = document.getElementById('comment-close-btn');
 const COMMENT_SUBMIT_BTN = document.getElementById('comment-submit-btn');
 
 // Функция: Показать форму ввода коментария к компании
-function add_comment(id, name) {
+function add_comment(company_id, name) {
     COMMENT_COMPANY_NAME.textContent = name;
     COMMENT_DIALOG.showModal();
     // Кнопка "Отмена"
     COMMENT_CLOSE_BTN.onclick = function () {
+        // Если в форме есть текст - потребовать подтверждения
         if (COMMENT_TEXTAREA.value.length > 0) {
             if (!confirm('Вы уверены, что хотите удалить текст и выйти?')) return;
         }
+        // Очистить форму
         COMMENT_TEXTAREA.value = '';
+        // Закрыть окно
         COMMENT_DIALOG.close();
+    }
+    // Кнопка "Отправить"
+    COMMENT_SUBMIT_BTN.onclick = function () {
+        // Проверка, что условия формы выполнены (есть текст)
+        if (!COMMENT_TEXTAREA.validity.valid){
+            COMMENT_TEXTAREA.placeholder = 'Сначала что-нибудь напишите...'
+            return;
+        }
+        // Получить параметры настроек видемости
+        const VISIBILITY = COMMENT_DIALOG.querySelector('input:checked').value;
+        const XHR = new XMLHttpRequest();
+        XHR.open('POST', 'server/set_comment.php')
+        XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        XHR.send(`company_id=${company_id}&user_id=${USER_ID}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
+        // Если коментарий успешно отправлен - закрыть форму
+        XHR.onload = function () {
+            if (XHR.status == 200 && XHR.response == 1) {
+                COMMENT_TEXTAREA.value = '';
+                COMMENT_DIALOG.close();
+            }
+        }
     }
 }
