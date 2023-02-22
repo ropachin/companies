@@ -41,28 +41,39 @@ class CompanyCard {
 }
 
 // КОНСТАНТЫ И ПЕРЕМЕННЫЕ
-const COMPANIES_CATALOG = document.getElementById('catalog'); // Блок со списком компаний
+// Блок со списком компаний
+const COMPANIES_CATALOG = document.getElementById('catalog');
+// Кнопка "Показать все компании"
+const SHOW_ALL_COMPANIES_BTN = document.getElementById('show-all-companies-btn');
+
 // Переменная будет хранить обьект всех компаний в Базе Данных
 let all_companies;
-// Получить список компаний (AJAX)
-const XHR = new XMLHttpRequest();
-XHR.open('GET', 'server/get_company.php');
-XHR.send();
-// Заглушка загрузки
-// XHR.onloadstart = function () {}
-XHR.onload = function () {
-    // Полученный json с данными о компании парсим в обьект OBJ
-    const COMPANY_DATA = all_companies = JSON.parse(XHR.response);
-    // Циклом создаём карточки для всех компаний
-    for (getCompany of COMPANY_DATA) {
-        // Создаём экземпляр класса для создания карточки компании
-        const COMPANY = new CompanyCard(getCompany);
-        /* Так как мы создали свой класс, мы можем изменить нужные свойсва компании перед вызовом метода add()
-        Пример: [COMPANY_CARD.name = 'Альфабет'], но в данном случае, ничего менять не будем.
-        Метод add() - внедряет данные в тело страницы, принимает DOM елемент в котором будут строиться карточки компаний*/
-        COMPANY.add(COMPANIES_CATALOG);
+// Получить список компаний (AJAX) и показать их на странице
+// Будет вызвана при загрузке страницы, а так же при сбросе поиска
+function show_all_companies() {
+    const XHR = new XMLHttpRequest();
+    XHR.open('GET', 'server/get_company.php');
+    XHR.send();
+    // Заглушка загрузки
+    // XHR.onloadstart = function () {}
+    XHR.onload = function () {
+        // Полученный json с данными о компании парсим в обьект OBJ
+        const COMPANY_DATA = all_companies = JSON.parse(XHR.response);
+        // Циклом создаём карточки для всех компаний
+        for (getCompany of COMPANY_DATA) {
+            // Создаём экземпляр класса для создания карточки компании
+            const COMPANY = new CompanyCard(getCompany);
+            /* Так как мы создали свой класс, мы можем изменить нужные свойсва компании перед вызовом метода add()
+            Пример: [COMPANY_CARD.name = 'Альфабет'], но в данном случае, ничего менять не будем.
+            Метод add() - внедряет данные в тело страницы, принимает DOM елемент в котором будут строиться карточки компаний*/
+            COMPANY.add(COMPANIES_CATALOG);
+            // Скрыть пнопку "Показать все компании"
+            SHOW_ALL_COMPANIES_BTN.classList.add('hidden');
+        }
     }
 }
+// Вызвать функцию, призагрузке страницы
+show_all_companies();
 
 // ПОИСК
 // Меню поиска
@@ -73,12 +84,17 @@ const SEARCH_BLOCK = document.getElementById('search-block');
 const SEARCH_INPUT = SEARCH_BLOCK.querySelector('input')
 for (elem of SEARCH_LIST) {
     elem.onclick = function () {
+        // Получить условие поиска из атрибута кнопки на которую нажал польхователь
+        searchTerm = this.getAttribute('search');
         // Отобразить форму поиска
-        SEARCH_BLOCK.style.display = 'grid';
+        SEARCH_BLOCK.classList.remove('hidden');
+        // Указать пользователю условие полиска
+        SEARCH_BLOCK.querySelector('p').textContent = (searchTerm == 'name')
+            ? 'Введите название компании' : 'Введите ИНН компании';
         // Отслеживание кликов мышки, что-бы скрыть форму
         SEARCH_BLOCK.addEventListener('click', hide_search);
         // Выполнение поиска (передать условие поиска)
-        search_company(this.getAttribute('search'));
+        search_company(searchTerm);
     }
 }
 
@@ -87,7 +103,7 @@ function hide_search() {
     SEARCH_BLOCK.onclick = SEARCH_BLOCK.onsubmit = e => {
         // Если кликнуть вне окна - форма скроется
         if (e.target == SEARCH_BLOCK) {
-            this.style.display = 'none';
+            this.classList.add('hidden')
             // Очистить форму поиска
             SEARCH_INPUT.value = '';
             // Удалить отслеживание
@@ -97,21 +113,23 @@ function hide_search() {
 }
 
 // Функция выполняющая поиск компаний
-function search_company(search = 'name') {
+function search_company(searchTerm) {
     // Событие на каждый ввод в поисковую строку
     SEARCH_INPUT.oninput = function () {
         // Очистить блок каталога
         COMPANIES_CATALOG.innerHTML = null;
+        // Показать кнопку "Показать все компании"
+        SHOW_ALL_COMPANIES_BTN.classList.remove('hidden');
         // Циклом пройтись по всем сущесвующим компаниям
         for (company of all_companies) {
             // Если надо найти по имени
-            if (search == 'name') {
+            if (searchTerm == 'name') {
                 // Проверяем есть ли сопадение в имени с введённым текстом поиска
                 // Или строка поиска пуста
                 if (!company.name.toLocaleLowerCase().includes(this.value.toLocaleLowerCase())) continue;
             }
             // Если надо найти по ИНН
-            else if (search == 'TIN') {
+            else if (searchTerm == 'TIN') {
                 // Проверка с начала строки
                 if (!company.TIN.startsWith(this.value)) continue;
             }
@@ -120,4 +138,7 @@ function search_company(search = 'name') {
         }
     }
 }
+
+// Событие при нажатии на кнопку "Показать все компании"
+SHOW_ALL_COMPANIES_BTN.onclick = show_all_companies;
 

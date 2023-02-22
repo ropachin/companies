@@ -32,3 +32,8 @@
 #new_company_btn {
     display: none;
 }
+
+/* Кнопка "Показать все компании" */
+#show-all-companies-btn{
+    margin: 20px auto;
+}

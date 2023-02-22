@@ -10,14 +10,19 @@
     background-color: transparent;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .default-btn {
-    display: inline-block;
+    display: block;
     padding: 5px 10px;
     background-color: var(--logo-color);
     color: #000;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    width: max-content;
 }
 
 .default-btn:hover {
@@ -129,12 +134,12 @@ header>nav>span:hover {
 /* Блок поиска */
 #search-block {
     position: absolute;
-    display: none;
+    display: grid;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #000000e0;
+    background-color: #00000099;
 }
 
 #search-block>fieldset {
@@ -161,6 +166,10 @@ header>nav>span:hover {
     color: #fff;
 }
 
+#search-block>fieldset>input:focus {
+    outline-color: var(--logo-color);
+}
+
 #search-block>fieldset>p {
     text-align: center;
     font-size: 18px;
@@ -169,7 +178,6 @@ header>nav>span:hover {
 }
 
 #search-block>fieldset>button {
-    display: block !important;
     margin: 20px auto;
     font-size: 18px;
 }

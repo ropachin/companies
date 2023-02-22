@@ -1,0 +1,8 @@
+<form id="search-block" class="hidden" filter-type="">
+    <fieldset>
+        <legend>Поиск</legend>
+        <p>Введите название компании</p>
+        <input type="search">
+        <button type="button" class="default-btn">Поиск</button>
+    </fieldset>
+</form>

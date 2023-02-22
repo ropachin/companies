@@ -1,26 +1,20 @@
 <header>
     <span id="header-logo">ТЕСТОВОЕ <span>ЗАД</span>АНИЕ</span>
     <nav>
-        <div id="header-search-icon">
-            <div>
-                <ul>
-                    <li search="name">По Имени</li>
-                    <li search="TIN">По ИНН</li>
-                </ul>
+        <?php if (str_contains($_SERVER['SCRIPT_NAME'], 'index')) : ?>
+            <div id="header-search-icon">
+                <div>
+                    <ul>
+                        <li search="name">По Имени</li>
+                        <li search="TIN">По ИНН</li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        <?php endif ?>
         <span>Компании</span>
         <span>Войти</span>
         <span>Зарегестрироваться</span>
         </span>
     </nav>
 </header>
-
-<form id="search-block" filter-type="">
-    <fieldset>
-        <legend>Поиск</legend>
-        <p>Введите название компании</p>
-        <input type="search">
-        <button type="button" class="default-btn">Поиск</button>
-    </fieldset>
-</form>
+<p class="default-btn hidden" id="show-all-companies-btn">Показать все компании</p>

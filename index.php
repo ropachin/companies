@@ -10,6 +10,7 @@
 
 <body>
     <?php require 'inc/header' ?>
+    <?php include 'inc/search' ?>
     <main>
         <div id="catalog"></div>
         <a href="#" class="default-btn" id="new_company_btn">Новая компания</a>
