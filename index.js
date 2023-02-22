@@ -51,6 +51,9 @@ let all_companies;
 // Получить список компаний (AJAX) и показать их на странице
 // Будет вызвана при загрузке страницы, а так же при сбросе поиска
 function show_all_companies() {
+    // Очистить каталог перед наполнением
+    COMPANIES_CATALOG.innerHTML = '';
+    // Ajax
     const XHR = new XMLHttpRequest();
     XHR.open('GET', 'server/get_company.php');
     XHR.send();
@@ -102,7 +105,13 @@ for (elem of SEARCH_LIST) {
 
 // Функция для отслеживания события и скрытия блока поиска или при начале поиска
 function hide_search() {
+    // Нажатие на кнопку "Закрыть"
     SEARCH_CLOSE_BTN.onclick = hide;
+    // Клавиша Escape, если форма ввода пуста
+    document.onkeydown = e => {
+        if (e.key == "Escape" && SEARCH_INPUT.value == '') hide();
+    }
+    // Клик по фону вне формы
     SEARCH_BLOCK.onclick = e => {
         // Если кликнуть вне окна - форма скроется
         if (e.target == SEARCH_BLOCK) hide()
