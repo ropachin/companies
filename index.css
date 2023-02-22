@@ -18,10 +18,6 @@
     text-shadow: -1px 1px 1px #000;
 }
 
-.catalog-company-card>hr {
-    border-color: #434b54;
-}
-
 .catalog-company-card>*>span {
     color: var(--logo-color)
 }

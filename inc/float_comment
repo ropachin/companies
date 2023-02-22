@@ -2,7 +2,20 @@
     <h3></h3>
     <p>Оставьте отзыв</p>
     <textarea name="" id="" cols="30" rows="10"></textarea>
-    <button class="default-btn">Отправить</button>
+    <p id="comment-visibility-caption">Кто сможет видеть ваш отзыв?</p>
+    <div id="comment-visibility-settings">
+        <input type="radio" name="comment_visibility" value="all" id="comment-visibility-radio-all" checked>
+        <label for="comment-visibility-radio-all">Все</label>
+        <input type="radio" name="comment_visibility" value="сolleagues" id="comment-visibility-radio-сolleagues">
+        <label for="comment-visibility-radio-сolleagues">Коллеги</label>
+        <input type="radio" name="comment_visibility" value="self" id="comment-visibility-radio-self">
+        <label for="comment-visibility-radio-self">Только я</label>
+    </div>
+    <hr>
+    <div id="dialog-buttons">
+        <button class="default-btn" id="comment-close-btn">Отмена</button>
+        <button class="default-btn" id="comment-submit-btn">Отправить</button>
+    </div>
 </dialog>
 
 
@@ -13,6 +26,7 @@
         border-radius: 20px;
         color: #fff;
         text-align: center;
+        color: #bbb;
     }
 
     dialog::backdrop {
@@ -30,13 +44,37 @@
         color: #fff;
         font-size: 18px;
         display: block;
+        margin: 15px 0;
     }
 
     dialog>textarea:focus {
         outline: 1px solid var(--logo-color);
     }
 
-    dialog>button {
-        margin: 15px auto 0;
+    #comment-visibility-caption {
+        margin-bottom: 5px;
+    }
+
+    #comment-visibility-settings {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #comment-visibility-settings>input {
+        display: none;
+    }
+
+    #comment-visibility-settings>input:checked+label {
+        color: var(--logo-color);
+        text-decoration: underline;
+    }
+
+    dialog>hr {
+        margin: 15px 0;
+    }
+
+    #dialog-buttons {
+        display: flex;
+        justify-content: space-evenly;
     }
 </style>

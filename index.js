@@ -1,3 +1,4 @@
+// КЛАСС
 // Класс для создания карточек компаний в списке (принимает response обьект с даннsми компании с сервера)
 class CompanyCard {
     // Свойсва класса (используемые данные компании)
@@ -55,15 +56,18 @@ class CompanyCard {
         PARENT.append(CARD);
     }
 }
-
+// END КЛАСС
+//-------------------------------------------------------------------------------------------------
 // КОНСТАНТЫ И ПЕРЕМЕННЫЕ
 // Блок со списком компаний
 const COMPANIES_CATALOG = document.getElementById('catalog');
 // Кнопка "Показать все компании"
 const SHOW_ALL_COMPANIES_BTN = document.getElementById('show-all-companies-btn');
-
 // Переменная будет хранить обьект всех компаний в Базе Данных
 let all_companies;
+// END КОНСТАНТЫ И ПЕРЕМЕННЫЕ
+//-------------------------------------------------------------------------------------------------
+// ЗАГРУЗКА КОМПАНИЙ
 // Получить список компаний (AJAX) и показать их на странице
 // Будет вызвана при загрузке страницы, а так же при сбросе поиска
 function show_all_companies() {
@@ -93,7 +97,8 @@ function show_all_companies() {
 }
 // Вызвать функцию, призагрузке страницы
 show_all_companies();
-
+// END ЗАГРУЗКА КОМПАНИЙ
+//-------------------------------------------------------------------------------------------------
 // ПОИСК
 // Меню поиска
 const SEARCH_LIST = document.querySelectorAll('#header-search-icon>div>ul>li');
@@ -118,7 +123,6 @@ for (elem of SEARCH_LIST) {
         search_company(searchTerm);
     }
 }
-
 // Функция для отслеживания события и скрытия блока поиска или при начале поиска
 function hide_search() {
     // Нажатие на кнопку "Закрыть"
@@ -141,8 +145,7 @@ function hide_search() {
         SEARCH_BLOCK.removeEventListener('click', hide_search);
     }
 }
-
-// Функция выполняющая поиск компаний
+// Функция выполняющая поиск компаний при вводе в строку поиска
 function search_company(searchTerm) {
     // Событие на каждый ввод в поисковую строку
     SEARCH_INPUT.oninput = function () {
@@ -168,21 +171,28 @@ function search_company(searchTerm) {
         }
     }
 }
-
 // Событие при нажатии на кнопку "Показать все компании"
 SHOW_ALL_COMPANIES_BTN.onclick = show_all_companies;
-
+// END ПОИСК
+//-------------------------------------------------------------------------------------------------
+// КОМЕНТАРИИ К КОМПАНИЯМ
 // Всплывающее окно для коментариев
 const COMMENT_DIALOG = document.getElementById('comment-dialog');
-const COMMENT_DIALOG_COMPANY_NAME = COMMENT_DIALOG.querySelector('h3');
-const COMMENT_DIALOG_BTN = COMMENT_DIALOG.querySelector('button');
+const COMMENT_COMPANY_NAME = COMMENT_DIALOG.querySelector('h3');
+const COMMENT_TEXTAREA = COMMENT_DIALOG.querySelector('textarea');
+const COMMENT_CLOSE_BTN = document.getElementById('comment-close-btn');
+const COMMENT_SUBMIT_BTN = document.getElementById('comment-submit-btn');
 
 // Функция: Показать форму ввода коментария к компании
 function add_comment(id, name) {
-    COMMENT_DIALOG_COMPANY_NAME.textContent = name;
+    COMMENT_COMPANY_NAME.textContent = name;
     COMMENT_DIALOG.showModal();
-    // Кнопка "Отправить"
-    COMMENT_DIALOG_BTN.onclick = function () {
+    // Кнопка "Отмена"
+    COMMENT_CLOSE_BTN.onclick = function () {
+        if (COMMENT_TEXTAREA.value.length > 0) {
+            if (!confirm('Вы уверены, что хотите удалить текст и выйти?')) return;
+        }
+        COMMENT_TEXTAREA.value = '';
         COMMENT_DIALOG.close();
     }
 }

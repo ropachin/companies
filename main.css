@@ -49,6 +49,10 @@ a {
     text-decoration: none;
 }
 
+hr{
+    border-color: #434b54
+}
+
 main {
     padding: 50px 20px;
 }
