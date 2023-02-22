@@ -1,0 +1,42 @@
+<dialog id="comment-dialog">
+    <h3></h3>
+    <p>Оставьте отзыв</p>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button class="default-btn">Отправить</button>
+</dialog>
+
+
+<style>
+    dialog {
+        background-color: var(--body-color-bg);
+        border: none;
+        border-radius: 20px;
+        color: #fff;
+        text-align: center;
+    }
+
+    dialog::backdrop {
+        background-color: #000000c0;
+    }
+
+    dialog>h3 {
+        color: var(--logo-color);
+    }
+
+    dialog>textarea {
+        resize: none;
+        background-color: var(--header-color-bg);
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        display: block;
+    }
+
+    dialog>textarea:focus {
+        outline: 1px solid var(--logo-color);
+    }
+
+    dialog>button {
+        margin: 15px auto 0;
+    }
+</style>

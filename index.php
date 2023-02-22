@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <?php require 'inc/header' ?>
-    <?php include 'inc/search' ?>
+    <?php
+    require 'inc/header';
+    include 'inc/search';
+    include 'inc/float_comment';
+    ?>
     <main>
         <div id="catalog"></div>
         <a href="#" class="default-btn" id="new_company_btn">Новая компания</a>

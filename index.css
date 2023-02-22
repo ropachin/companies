@@ -31,6 +31,21 @@
     color: var(--logo-color);
 }
 
+/* Максимально растянуть предпоследний элемент , что-бы прижать кнопки к низу */
+.catalog-company-card-CEO{
+    flex-grow: 1;
+}
+
+.catalog-company-card-control{
+    display: flex;
+    justify-content: space-between;
+}
+
+.catalog-company-card-button{
+    text-shadow: none;
+    margin-block: 10px;
+}
+
 .catalog-company-card-comment {
     text-align: end;
     cursor: pointer;

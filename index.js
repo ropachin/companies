@@ -22,6 +22,8 @@ class CompanyCard {
         const ADDRESS = document.createElement('p');
         const TEL = document.createElement('p');
         const CEO = document.createElement('p')
+        const CONTROL = document.createElement('div')
+        const BUTTON = document.createElement('a')
         const COMMENT = document.createElement('p');
         // Классы для блоков
         CARD.classList.add('catalog-company-card');
@@ -30,8 +32,11 @@ class CompanyCard {
         ADDRESS.classList.add('catalog-company-card-address');
         TEL.classList.add('catalog-company-card-tel');
         CEO.classList.add('catalog-company-card-CEO');
+        CONTROL.classList.add('catalog-company-card-control')
         COMMENT.classList.add('catalog-company-card-comment');
         COMMENT.classList.add('default-link');
+        BUTTON.classList.add('catalog-company-card-button');
+        BUTTON.classList.add('default-btn');
         // Заполнить блоки <p> с отдельными данными о компании
         NAME.textContent = this.name;
         TIN.innerHTML = '<span>ИНН:</span> ' + this.TIN;
@@ -39,10 +44,14 @@ class CompanyCard {
         TEL.innerHTML = '<span>Телефон:</span> ' + this.tel;
         CEO.innerHTML = '<span>Генеральный директор:</span> ' + this.CEO;
         COMMENT.textContent = 'Оставить отзыв';
+        BUTTON.textContent = 'Подробнее';
         // Событие при нажатии на кнопку "Добавить коментарий"
-        COMMENT.onclick = () => add_comment(this.id);
+        COMMENT.onclick = () => add_comment(this.id, this.name);
+        // Ссылка для перехода на страницу компании
+        BUTTON.href = '/company.php?id=' + this.id;
         // Поместить все блоки с данными в карточку компании, а эту карточку в блок всех каталога карточек
-        CARD.append(NAME, HR, TIN, ADDRESS, TEL, CEO, COMMENT);
+        CONTROL.append(COMMENT, BUTTON);
+        CARD.append(NAME, HR, TIN, ADDRESS, TEL, CEO, CONTROL);
         PARENT.append(CARD);
     }
 }
@@ -163,7 +172,17 @@ function search_company(searchTerm) {
 // Событие при нажатии на кнопку "Показать все компании"
 SHOW_ALL_COMPANIES_BTN.onclick = show_all_companies;
 
+// Всплывающее окно для коментариев
+const COMMENT_DIALOG = document.getElementById('comment-dialog');
+const COMMENT_DIALOG_COMPANY_NAME = COMMENT_DIALOG.querySelector('h3');
+const COMMENT_DIALOG_BTN = COMMENT_DIALOG.querySelector('button');
+
 // Функция: Показать форму ввода коментария к компании
-function add_comment(id) {
-    console.log(id);
+function add_comment(id, name) {
+    COMMENT_DIALOG_COMPANY_NAME.textContent = name;
+    COMMENT_DIALOG.showModal();
+    // Кнопка "Отправить"
+    COMMENT_DIALOG_BTN.onclick = function () {
+        COMMENT_DIALOG.close();
+    }
 }
