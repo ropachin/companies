@@ -47,9 +47,9 @@
 }
 
 .default-input-text {
-    background-color: transparent;
+    background-color: var(--block-color);
     border: none;
-    outline: 1px solid #777;
+    outline: 1px solid transparent;
     padding: 10px 4%;
     color: #fff;
     border-radius: 2px;

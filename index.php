@@ -4,8 +4,8 @@
 <head>
     <?php require 'inc/head_inc' ?>
     <title>Тестовое задание</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js" defer></script>
 </head>
 
 <body>

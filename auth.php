@@ -4,8 +4,8 @@
 <head>
     <?php require 'inc/head_inc' ?>
     <title>Тестовое задание</title>
-    <link rel="stylesheet" href="auth.css">
-    <script src="auth.js" defer></script>
+    <link rel="stylesheet" href="css/auth.css">
+    <script src="js/auth.js" defer></script>
 </head>
 
 <body>
