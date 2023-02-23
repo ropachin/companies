@@ -11,7 +11,7 @@
 .catalog-company-card {
     display: flex;
     flex-direction: column;
-    background-color: #2e353e;
+    background-color: var(--block-color);
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 4px #00000090;

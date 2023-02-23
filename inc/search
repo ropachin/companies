@@ -2,7 +2,7 @@
     <fieldset>
         <legend>Поиск</legend>
         <p>Введите название компании</p>
-        <input type="search">
+        <input class="default-input-text" type="search">
         <button type="button" class="default-btn">Закрыть</button>
     </fieldset>
 </form>

@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wrapper */
+#auth-main {
+    display: grid;
+    flex-grow: 1;
+}
+
+/* Форма */
+.auth-form {
+    place-self: center;
+    width: max-content;
+}
+
+.auth-inputs-parent {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-inputs-parent>input{
+    margin: 6px 0;
+}
+
+.auth-btn{
+    width: 100%;
+    border-radius: 2px;
+    padding: 10px 0;
+}

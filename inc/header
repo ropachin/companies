@@ -13,9 +13,9 @@
                 </div>
             </div>
         <?php endif ?>
-        <span class="default-link"><a href="/">Компании</a></span>
-        <span class="default-link">Войти</span>
-        <span class="default-link">Зарегестрироваться</span>
+        <a href="/" class="default-link">Компании</a>
+        <a href="/auth.php" class="default-link">Войти</a>
+        <a href="/auth.php?reg=on" class="default-link">Зарегестрироваться</a>
         </span>
     </nav>
 </header>
