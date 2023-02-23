@@ -27,6 +27,18 @@
             <script src="/js/auth_reg.js" defer></script>
         <?php else : ?>
             <!-- Если нужна форма регистрации авторизации -->
+            <form id="auth-form" method="post" action="/server/login.php" name="login_form">
+                <h1>Авторизация</h1>
+                <div class="auth-inputs-parent">
+                    <input class="default-input-text" type="email" name="email" placeholder="E-MAIL" minlength="8" maxlength="50" required>
+                    <input class="default-input-text" type="password" name="password" name="password" placeholder="Пароль" minlength="8" maxlength="32" required>
+                    <input class="default-btn" type="submit" value="Войти">
+                </div>
+                <p id="auth-message">&nbsp</p>
+                <p id="login-timer">&nbsp</p>
+            </form>
+            <!-- Подключение js скрипта только для регистрации -->
+            <script src="/js/auth_login.js" defer></script>
         <?php endif ?>
     </main>
 </body>

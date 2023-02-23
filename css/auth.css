@@ -1,3 +1,9 @@
+@media (width <=480px) {
+    #auth-form {
+        width: 100% !important;
+    }
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -13,6 +19,8 @@ body {
 #auth-form {
     place-self: center;
     width: max-content;
+    text-align: center;
+    width: 300px;
 }
 
 /* блок с input элементами */
@@ -35,6 +43,5 @@ body {
 
 /* Сообщение об ошибке */
 #auth-message {
-    text-align: center;
     color: var(--logo-color);
 }

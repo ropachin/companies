@@ -6,6 +6,20 @@
     --logo-dark-color: #ffb300;
 }
 
+@media(width<800px) {
+    #header-logo {
+        display: none;
+    }
+}
+
+/* @media(width<480px) {
+
+} */
+
+*{
+    box-sizing: border-box;
+}
+
 /* Убираем выделение всех текстовых элементов */
 *::selection {
     background-color: transparent;
@@ -87,15 +101,18 @@ body {
     color: #fff;
     font-family: system-ui;
     min-height: 100vh;
+    white-space: nowrap;
 }
 
 /* Шапка */
 header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     background-color: var(--header-color-bg);
     height: 50px;
     line-height: 50px;
     padding: 0 1%;
-    white-space: nowrap;
 }
 
 /* Лого */
@@ -104,6 +121,7 @@ header {
     font-size: 38px;
     letter-spacing: 1px;
     cursor: default;
+    white-space: nowrap;
 }
 
 /* Выделяемая подстрока в Лого */
@@ -116,12 +134,10 @@ header {
 /* Элементы в правой части шапки */
 header>nav {
     display: flex;
-    float: right;
-    width: 380px;
-    justify-content: space-between;
 }
 
 /* Каждый кликабельный элемент в правой части шапки*/
 header>nav>* {
     cursor: pointer;
+    margin-inline: 6px;
 }

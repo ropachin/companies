@@ -1,3 +1,45 @@
+@media (width <=480px) {
+    #catalog {
+        grid-template-columns: 1fr !important;
+    }
+
+    #header-search-icon {
+        cursor: default;
+        position: initial !important;
+    }
+
+    #header-search-icon:hover div {
+        width: 100vw;
+        left: 0;
+        right: 0;
+    }
+
+    #header-search-icon>div>ul {
+        border-radius: 0 !important;
+    }
+
+    #search-block>fieldset {
+        margin: 0;
+        border-radius: 0 !important;
+        width: 100vw;
+        bottom: 0 !important;
+    }
+
+    #search-block>fieldset>input {
+        width: 100% !important;
+    }
+
+
+}
+
+@media (width <1050px) and (width > 480px) {
+    #catalog {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+
+
 /* Блок содержащий карточки компаний */
 #catalog {
     display: grid;
@@ -16,6 +58,7 @@
     border-radius: 10px;
     box-shadow: 0 0 4px #00000090;
     text-shadow: -1px 1px 1px #000;
+    white-space: break-spaces;
 }
 
 .catalog-company-card>*>span {
@@ -60,9 +103,8 @@
 /* Поиск в шапке */
 #header-search-icon {
     width: 40px;
-    height: 40px;
-    background: url('/src/svg/search-icon.svg');
-    margin: 5px 0;
+    /* height: 40px; */
+    background: url('/src/svg/search-icon.svg') center no-repeat;
     position: relative;
 }
 
@@ -98,13 +140,12 @@
 
 /* Блок поиска */
 #search-block {
-    position: absolute;
+    position: fixed;
     display: grid;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #00000099;
 }
 
 #search-block>fieldset {
@@ -112,6 +153,8 @@
     place-self: center;
     padding: 0 20px;
     border-radius: 30px;
+    bottom: 10px;
+    position: absolute;
 }
 
 #search-block>fieldset>legend {
@@ -121,7 +164,7 @@
 }
 
 #search-block>fieldset>input {
-    width: min(380px, 90vh);
+    width: 480px;
     font-size: 20px;
     border-radius: 20px !important;
 }

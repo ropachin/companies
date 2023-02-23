@@ -13,7 +13,7 @@ class CompanyCard {
         this.address = responseObj.address;
         this.tel = responseObj.tel;
     }
-    // Метод для построения и внедрения полученных данных в DOM страницы
+    // Метод для построения и внедрения полученных данных в DOM страницы (принимает родителя для будущих карточек компаний)
     add(PARENT) {
         // Создать HTML елементы
         const CARD = document.createElement('div');
