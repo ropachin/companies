@@ -6,7 +6,7 @@
             <div id="header-search-icon">
                 <div>
                     <ul>
-                        <!-- Атрибута search указывают скрипту, что нужно искать -->
+                        <!-- Атрибут search указывают скрипту, что нужно искать -->
                         <li class="default-link" search="name">По Имени</li>
                         <li class="default-link" search="TIN">По ИНН</li>
                     </ul>
@@ -14,8 +14,12 @@
             </div>
         <?php endif ?>
         <a href="/" class="default-link">Компании</a>
-        <a href="/auth.php" class="default-link">Войти</a>
-        <a href="/auth.php?reg=on" class="default-link">Зарегестрироваться</a>
+        <?php if (empty($_COOKIE['user-token'])) : ?>
+            <a href="/auth.php" class="default-link">Войти</a>
+            <a href="/auth.php?reg=on" class="default-link">Зарегестрироваться</a>
+        <?php else : ?>
+            <a href="/server/logout.php" class="default-link">Выйти</a>
+        <?php endif ?>
         </span>
     </nav>
 </header>
