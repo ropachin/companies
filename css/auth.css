@@ -10,22 +10,31 @@ body {
 }
 
 /* Форма */
-.auth-form {
+#auth-form {
     place-self: center;
     width: max-content;
 }
 
+/* блок с input элементами */
 .auth-inputs-parent {
     display: flex;
     flex-direction: column;
 }
 
-.auth-inputs-parent>input{
+/* Все input елементы формы */
+.auth-inputs-parent>input {
     margin: 6px 0;
 }
 
-.auth-btn{
+/* Кнопка "Submit" */
+.auth-inputs-parent>input[type=submit] {
     width: 100%;
     border-radius: 2px;
     padding: 10px 0;
+}
+
+/* Сообщение об ошибке */
+#auth-message {
+    text-align: center;
+    color: var(--logo-color);
 }

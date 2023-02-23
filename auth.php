@@ -5,7 +5,6 @@
     <?php require 'inc/head_inc' ?>
     <title>Тестовое задание</title>
     <link rel="stylesheet" href="css/auth.css">
-    <script src="js/auth.js" defer></script>
 </head>
 
 <body>
@@ -13,16 +12,19 @@
     <main id="auth-main">
         <?php if (isset($_GET['reg'])) : ?>
             <!-- Если нужна форма регистрации -->
-            <form class="auth-form" method="post" action="/server/reg.php">
+            <form id="auth-form" method="post" action="/server/reg.php" name="reg_form">
                 <h1>Регистрация</h1>
                 <div class="auth-inputs-parent">
-                    <input class="default-input-text" type="text" name="name" require minlength="8" maxlength="50" placeholder="ФИО">
-                    <input class="default-input-text" type="email" name="email" require minlength="8" maxlength="50" placeholder="E-MAIL">
-                    <input class="default-input-text" type="password" name="password" require minlength="8" maxlength="32" name="password" id="reg-pass-1" placeholder="Пароль">
-                    <input class="default-input-text" type="password" require minlength="8" maxlength="32" name="password" id="reg-pass-2" placeholder="Повторите пароль">
-                    <input class="default-btn auth-btn" type="submit" value="Зарегестрироваться">
+                    <input class="default-input-text" type="text" name="name" placeholder="ФИО" minlength="8" maxlength="50" required>
+                    <input class="default-input-text" type="email" name="email" placeholder="E-MAIL" minlength="8" maxlength="50" required>
+                    <input class="default-input-text" type="password" name="password" name="password" placeholder="Пароль" minlength="8" maxlength="32" required>
+                    <input class="default-input-text" type="password" name="password" placeholder="Повторите пароль" minlength="8" maxlength="32" required>
+                    <input class="default-btn" type="submit" value="Зарегестрироваться">
                 </div>
+                <p id="auth-message">&nbsp</p>
             </form>
+            <!-- Подключение js скрипта только для регистрации -->
+            <script src="/js/auth_reg.js" defer></script>
         <?php else : ?>
             <!-- Если нужна форма регистрации авторизации -->
         <?php endif ?>
