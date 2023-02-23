@@ -75,7 +75,7 @@ function show_all_companies() {
     COMPANIES_CATALOG.innerHTML = '';
     // Ajax
     const XHR = new XMLHttpRequest();
-    XHR.open('GET', 'server/get_company.php');
+    XHR.open('GET', 'server/ajax/get_company.php');
     XHR.send();
     // Заглушка загрузки
     // XHR.onloadstart = function () {}
@@ -208,7 +208,7 @@ function add_comment(company_id, name) {
         // Получить параметры настроек видемости
         const VISIBILITY = COMMENT_DIALOG.querySelector('input:checked').value;
         const XHR = new XMLHttpRequest();
-        XHR.open('POST', 'server/set_comment.php')
+        XHR.open('POST', 'server/ajax/set_comment.php')
         XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         XHR.send(`company_id=${company_id}&user_id=${USER_ID}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
         // Если коментарий успешно отправлен - закрыть форму
