@@ -31,10 +31,15 @@
     background-color: var(--logo-dark-color);
 }
 
-.default-btn:active {
+.default-btn:active:not(:disabled) {
     background-color: transparent;
     outline: 1px solid;
     color: var(--logo-color);
+}
+
+.default-btn:disabled {
+    background-color: #bbb;
+    cursor: default;
 }
 
 /* Стандартный стиль ссылки */

@@ -201,20 +201,28 @@ function add_comment(company_id, name) {
     // Кнопка "Отправить"
     COMMENT_SUBMIT_BTN.onclick = function () {
         // Проверка, что условия формы выполнены (есть текст)
-        if (!COMMENT_TEXTAREA.validity.valid){
+        if (!COMMENT_TEXTAREA.validity.valid) {
             COMMENT_TEXTAREA.placeholder = 'Сначала что-нибудь напишите...'
             return;
         }
         // Получить параметры настроек видемости
         const VISIBILITY = COMMENT_DIALOG.querySelector('input:checked').value;
+        // Заблокировать кнопку отправить, что-бы избежать повторной отправки
+        COMMENT_SUBMIT_BTN.setAttribute('disabled', '');
+        // AJAX
         const XHR = new XMLHttpRequest();
         XHR.open('POST', 'server/ajax/set_comment.php')
         XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         XHR.send(`company_id=${company_id}&user_id=${USER_ID}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
         // Если коментарий успешно отправлен - закрыть форму
         XHR.onload = function () {
+            // Разблокировать кнопку отправки
+            COMMENT_SUBMIT_BTN.removeAttribute('disabled');
+            // Если коментарий успешно записан в БД
             if (XHR.status == 200 && XHR.response == 1) {
+                // Очистить форму 
                 COMMENT_TEXTAREA.value = '';
+                // Закрыть окно
                 COMMENT_DIALOG.close();
             }
         }
