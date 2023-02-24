@@ -1,5 +1,23 @@
 // КЛАСС
-// Класс для создания карточек компаний в списке (принимает response обьект с даннsми компании с сервера)
+// Класс для подключения внешних html документов и их внедрения в DOM сайта
+class loadHTML {
+    frame;
+    async load(url) {
+        // Читаем файл с помощью fetch
+        const RESPONSE = await fetch(url);
+        // Создаём пустой блок
+        this.frame = document.createElement('div');
+        // Наполняем этот блок html кодом из файла
+        this.frame.innerHTML = await RESPONSE.text();
+        // Добавляем блок в DOM, в конец body
+        document.body.append(this.frame);
+    }
+    // Метод "Удалить блок"
+    close() {
+        this.frame.remove();
+    }
+}
+// Класс для создания карточек компаний в списке (принимает response обьект с данными компании с сервера)
 class CompanyCard {
     // Свойсва класса (используемые данные компании)
     id; name; TIN; info; CEO; address; tel;
@@ -95,7 +113,7 @@ function show_all_companies() {
         }
     }
 }
-// Вызвать функцию, призагрузке страницы
+// Вызвать функцию, при загрузке страницы
 show_all_companies();
 // END ЗАГРУЗКА КОМПАНИЙ
 //-------------------------------------------------------------------------------------------------
@@ -232,14 +250,10 @@ function add_comment(company_id, name) {
 // ДОБАВИТЬ НОВУЮ КОМПАНИЮ
 // Вставляем html формы в конец body с помощью fetch из внешнего файла
 async function new_company() {
-    // Читаем файл с html формы
-    const PROMISE = await fetch('/inc/new_company');
-    // Создаём пустой блок
-    const FRAME = document.createElement('div');
-    // Наполняем этот блок html фармы для ввода новой компании
-    FRAME.innerHTML = await PROMISE.text();
-    // Добавляем блок в DOM в конец body
-    document.body.append(FRAME);
+    // Загрузить и показать форму
+    const FORM = new loadHTML;
+    await FORM.load('https://test-website.cf/inc/new_company');
+
     // Скрипт формы
     // Родительский блок с формой
     const NEW_COMPANY_BLOCK = document.getElementById('new-company-block');
@@ -249,6 +263,8 @@ async function new_company() {
     const INPUTS_LIST = NEW_COMPANY_BLOCK.querySelectorAll('input');
     // Кнопка "Отмена"
     const NEW_COMPANY_CLOSE_BTN = document.getElementById('new-company-close-btn');
+    // Кнопка "Отправить"
+    const NEW_COMPANY_SUBMIT_BTN = document.getElementById('new-company-submit-btn');
     // При нажатии на кнопку "Отмена"
     NEW_COMPANY_CLOSE_BTN.onclick = function () {
         // Проверка, есть ли тект в каком либо input элементе
@@ -258,12 +274,30 @@ async function new_company() {
                 break;
             }
         }
-        FRAME.remove();
+        FORM.close();
     }
     // При отправке формы
     NEW_COMPANY_BLOCK.onsubmit = e => {
+        // Отключить стандартную отправку формы
         e.preventDefault();
-        console.log(e);
+        NEW_COMPANY_SUBMIT_BTN.setAttribute('disabled', '');
+        // Строка для сбора значений с форм
+        let gets = '';
+        // Наполнить строку значениями через цикл forEach
+        INPUTS_LIST.forEach(input => gets += '&' + input.name + '=' + input.value);
+        // AJAX (fetch), запускаем функцию done со статусом выполения в аргументе
+        fetch('server/ajax/set_company.php?' + gets).then(response => done(response.ok))
+            .catch(done(false));
+        function done(ok) {
+            // Если удачно
+            if (ok) {
+                FORM.close();
+                show_all_companies();
+            }
+            // Если отправит не удалось
+            else
+                console.log('Гавно')
+        }
     }
 
 }
