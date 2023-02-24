@@ -1,0 +1,19 @@
+<div class="catalog-company-card">
+    <p class="catalog-company-card-name"></p>
+    <p class="catalog-company-card-TIN">
+        <span></span>
+    </p>
+    <p class="catalog-company-card-address">
+        <span></span>
+    </p>
+    <p class="catalog-company-card-tel">
+        <span></span>
+    </p>
+    <p class="catalog-company-card-CEO">
+        <span></span>
+    </p>
+    <div class="catalog-company-card-control">
+        <p class="catalog-company-card-comment default-link">Оставить отзыв</p>
+        <a href="" class="catalog-company-card-button default-btn"></a>
+    </div>
+</div>

@@ -16,3 +16,4 @@ if ($result->num_rows != 0) {
 }
 // Отправить клиенту json строку с токеном пользователя и статусом
 echo json_encode($response);
+$mysql->close();

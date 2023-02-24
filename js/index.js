@@ -1,4 +1,4 @@
-// КЛАСС
+// КЛАССЫ
 // Класс для подключения внешних html документов и их внедрения в DOM сайта
 class loadHTML {
     frame;
@@ -30,6 +30,7 @@ class CompanyCard {
         this.CEO = responseObj.CEO;
         this.address = responseObj.address;
         this.tel = responseObj.tel;
+        this.owner = responseObj.owner;
     }
     // Метод для построения и внедрения полученных данных в DOM страницы (принимает родителя для будущих карточек компаний)
     add(PARENT) {
@@ -72,9 +73,11 @@ class CompanyCard {
         CONTROL.append(COMMENT, BUTTON);
         CARD.append(NAME, HR, TIN, ADDRESS, TEL, CEO, CONTROL);
         PARENT.append(CARD);
+        // Если пользователь владелец компании
+
     }
 }
-// END КЛАСС
+// END КЛАССЫ
 //-------------------------------------------------------------------------------------------------
 // КОНСТАНТЫ И ПЕРЕМЕННЫЕ
 // Блок со списком компаний
@@ -231,7 +234,7 @@ function add_comment(company_id, name) {
         const XHR = new XMLHttpRequest();
         XHR.open('POST', 'server/ajax/set_comment.php')
         XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        XHR.send(`company_id=${company_id}&user_id=${USER_ID}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
+        XHR.send(`company_id=${company_id}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
         // Если коментарий успешно отправлен - закрыть форму
         XHR.onload = function () {
             // Разблокировать кнопку отправки
@@ -261,6 +264,8 @@ async function new_company() {
     NEW_COMPANY_BLOCK.querySelector('form');
     // Все input элементы
     const INPUTS_LIST = NEW_COMPANY_BLOCK.querySelectorAll('input');
+    // Строка для уведомлений
+    const MESSAGE = document.getElementById('new-company-form-message');
     // Кнопка "Отмена"
     const NEW_COMPANY_CLOSE_BTN = document.getElementById('new-company-close-btn');
     // Кнопка "Отправить"
@@ -286,17 +291,15 @@ async function new_company() {
         // Наполнить строку значениями через цикл forEach
         INPUTS_LIST.forEach(input => gets += '&' + input.name + '=' + input.value);
         // AJAX (fetch), запускаем функцию done со статусом выполения в аргументе
-        fetch('server/ajax/set_company.php?' + gets).then(response => done(response.ok))
-            .catch(done(false));
+        fetch('server/ajax/set_company.php?' + gets).then(response => done(response.ok));
         function done(ok) {
-            // Если удачно
+            // Если успешно
             if (ok) {
                 FORM.close();
                 show_all_companies();
             }
-            // Если отправит не удалось
-            else
-                console.log('Гавно')
+            // Если отправить не удалось
+            else MESSAGE.textContent = 'Не удалось добавить компанию';
         }
     }
 
