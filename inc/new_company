@@ -1,4 +1,4 @@
-<div id="new-company-block" class="hidden">
+<div id="new-company-block">
     <form>
         <h2>Новая компания</h2>
         <div>
@@ -9,14 +9,12 @@
             <input class="default-input-text" type="text" placeholder="Генеральный директор" minlength="5"
                 maxlength="55" required>
             <div>
-                <button id="new-company-close-btn" class="default-btn">Отмена</button>
-                <button class="default-btn">Добавить</button>
+                <button type="button" id="new-company-close-btn" class="default-btn">Отмена</button>
+                <button type="submit" class="default-btn">Добавить</button>
             </div>
         </div>
     </form>
 </div>
-
-
 <style>
     #new-company-block {
         display: grid;
@@ -54,11 +52,3 @@
         margin-block-start: 20px;
     }
 </style>
-
-<script>
-    const NEW_COMPANY_BLOCK = document.getElementById('new-company-block');
-    const NEW_COMPANY_CLOSE_BTN = document.getElementById('new-company-close-btn');
-
-
-    NEW_COMPANY_CLOSE_BTN.onclick = () => NEW_COMPANY_BLOCK.style.display = 'none';
-</script>

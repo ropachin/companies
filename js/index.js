@@ -228,3 +228,42 @@ function add_comment(company_id, name) {
         }
     }
 }
+
+// ДОБАВИТЬ НОВУЮ КОМПАНИЮ
+// Вставляем html формы в конец body с помощью fetch из внешнего файла
+async function new_company() {
+    // Читаем файл с html формы
+    const PROMISE = await fetch('/inc/new_company');
+    // Создаём пустой блок
+    const FRAME = document.createElement('div');
+    // Наполняем этот блок html фармы для ввода новой компании
+    FRAME.innerHTML = await PROMISE.text();
+    // Добавляем блок в DOM в конец body
+    document.body.append(FRAME);
+    // Скрипт формы
+    // Родительский блок с формой
+    const NEW_COMPANY_BLOCK = document.getElementById('new-company-block');
+    // Форма для заполнения данных с новой компанией
+    NEW_COMPANY_BLOCK.querySelector('form');
+    // Все input элементы
+    const INPUTS_LIST = NEW_COMPANY_BLOCK.querySelectorAll('input');
+    // Кнопка "Отмена"
+    const NEW_COMPANY_CLOSE_BTN = document.getElementById('new-company-close-btn');
+    // При нажатии на кнопку "Отмена"
+    NEW_COMPANY_CLOSE_BTN.onclick = function () {
+        // Проверка, есть ли тект в каком либо input элементе
+        for (input of INPUTS_LIST) {
+            if (input.value != '') {
+                if (!confirm('Вы уверены, что хотите закрыть окно?')) return;
+                break;
+            }
+        }
+        FRAME.remove();
+    }
+    // При отправке формы
+    NEW_COMPANY_BLOCK.onsubmit = e => {
+        e.preventDefault();
+        console.log(e);
+    }
+
+}
