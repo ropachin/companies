@@ -3,7 +3,7 @@
 
 <head>
     <?php require 'inc/head_inc' ?>
-    <title>Тестовое задание</title>
+    <title>Авторизация</title>
     <link rel="stylesheet" href="css/auth.css">
 </head>
 

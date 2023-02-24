@@ -65,7 +65,7 @@
 .catalog-company-card {
     display: flex;
     flex-direction: column;
-    background-color: var(--block-color);
+    background-color: var(--block-color-bg);
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 4px #00000090;
@@ -100,11 +100,6 @@
 .catalog-company-card-comment {
     text-align: end;
     cursor: pointer;
-}
-
-/* Кнопка, "Новая компания" */
-#new_company_btn {
-    display: none;
 }
 
 /* Кнопка "Показать все компании" */

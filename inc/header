@@ -15,6 +15,7 @@
         <?php endif ?>
         <a href="/" class="default-link">Компании</a>
         <?php if (empty($_COOKIE['user-token'])) : ?>
+            <a href="#" class="default-link">Моя организация</a>
             <a href="/auth.php" class="default-link">Войти</a>
             <a href="/auth.php?reg=on" class="default-link">Зарегестрироваться</a>
         <?php else : ?>

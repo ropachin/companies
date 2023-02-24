@@ -12,11 +12,21 @@
     <?php
     require 'inc/header';
     include 'inc/search';
-    include 'inc/float_comment';
     ?>
     <main>
         <div id="catalog"></div>
-        <a href="#" class="default-btn" id="new_company_btn">Новая компания</a>
+        <?php if (isset($_COOKIE['user-token'])) : ?>
+            <a href="#" class="default-btn" id="new_company_btn" onclick="new_company()">Новая компания</a>
+            <script>
+                function new_company() {
+                    NEW_COMPANY_BLOCK.classList.remove('hidden');
+                }
+            </script>
+            <?php
+            include 'inc/new_company';
+            include 'inc/float_comment';
+            ?>
+        <?php endif ?>
     </main>
 </body>
 

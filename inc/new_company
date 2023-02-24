@@ -1,0 +1,64 @@
+<div id="new-company-block" class="hidden">
+    <form>
+        <h2>Новая компания</h2>
+        <div>
+            <input class="default-input-text" type="text" placeholder="Название компании" required>
+            <input class="default-input-text" type="text" placeholder="ИНН" minlength="10" maxlength="10" required>
+            <input class="default-input-text" type="text" placeholder="Адрес" minlength="10" maxlength="200" required>
+            <input class="default-input-text" type="tel" placeholder="Телефон" minlength="5" maxlength="12" required>
+            <input class="default-input-text" type="text" placeholder="Генеральный директор" minlength="5"
+                maxlength="55" required>
+            <div>
+                <button id="new-company-close-btn" class="default-btn">Отмена</button>
+                <button class="default-btn">Добавить</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<style>
+    #new-company-block {
+        display: grid;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #00000099;
+        text-align: center;
+    }
+
+    #new-company-block>form {
+        place-self: center;
+        background-color: var(--body-color-bg);
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    #new-company-block>form>div>input {
+        display: block;
+        width: 100%;
+        min-width: 480px;
+        margin-block-end: 10px;
+    }
+
+    #new-company-block>form>div>button {
+        margin-inline: auto;
+    }
+
+    /* Блок с кнопками */
+    #new-company-block>form>div>div {
+        display: flex;
+        justify-content: space-around;
+        margin-block-start: 20px;
+    }
+</style>
+
+<script>
+    const NEW_COMPANY_BLOCK = document.getElementById('new-company-block');
+    const NEW_COMPANY_CLOSE_BTN = document.getElementById('new-company-close-btn');
+
+
+    NEW_COMPANY_CLOSE_BTN.onclick = () => NEW_COMPANY_BLOCK.style.display = 'none';
+</script>
