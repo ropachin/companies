@@ -30,7 +30,7 @@ class CompanyCard {
         this.CEO = responseObj.CEO;
         this.address = responseObj.address;
         this.tel = responseObj.tel;
-        this.owner = responseObj.owner;
+        // this.owner = responseObj.owner;
     }
     // Метод для построения и внедрения полученных данных в DOM страницы (принимает родителя для будущих карточек компаний)
     add(PARENT) {
@@ -302,5 +302,4 @@ async function new_company() {
             else MESSAGE.textContent = 'Не удалось добавить компанию';
         }
     }
-
 }

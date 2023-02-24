@@ -27,7 +27,7 @@
             <script src="/js/auth_reg.js" defer></script>
         <?php else : ?>
             <!-- Если нужна форма регистрации авторизации -->
-            <form id="auth-form" method="post" action="/server/login.php" name="login_form">
+            <form id="auth-form" name="login_form">
                 <h1>Авторизация</h1>
                 <div class="auth-inputs-parent">
                     <input class="default-input-text" type="email" name="email" placeholder="E-MAIL" minlength="8" maxlength="50" required>
