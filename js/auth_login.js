@@ -26,7 +26,7 @@ LOGIN_FORM.onsubmit = e => {
                     AUTH_MESSAGE.textContent = 'Неверные email или пароль';
                     break;
                 case 200:
-                    document.cookie = `user-token=${RESPONSE_OBJ.token}; path=/; max-age=${60 * 60 * 24 * 30 * 180}`;
+                    localStorage.setItem('user', JSON.stringify(RESPONSE_OBJ.data));
                     AUTH_MESSAGE.style.color = '#0f0';
                     AUTH_MESSAGE.textContent = 'Вы успешно вошли в систему';
                     LOGIN_FORM.querySelectorAll('input').forEach(input => input.setAttribute('disabled', ''));

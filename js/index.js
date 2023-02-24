@@ -30,7 +30,7 @@ class CompanyCard {
         this.CEO = responseObj.CEO;
         this.address = responseObj.address;
         this.tel = responseObj.tel;
-        // this.owner = responseObj.owner;
+        this.owner = responseObj.owner;
     }
     // Метод для построения и внедрения полученных данных в DOM страницы (принимает родителя для будущих карточек компаний)
     add(PARENT) {
@@ -47,6 +47,7 @@ class CompanyCard {
         const COMMENT = document.createElement('p');
         // Классы для блоков
         CARD.classList.add('catalog-company-card');
+        CARD.setAttribute('owner', this.owner);
         NAME.classList.add('catalog-company-card-name');
         TIN.classList.add('catalog-company-card-TIN');
         ADDRESS.classList.add('catalog-company-card-address');
@@ -234,7 +235,7 @@ function add_comment(company_id, name) {
         const XHR = new XMLHttpRequest();
         XHR.open('POST', 'server/ajax/set_comment.php')
         XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        XHR.send(`company_id=${company_id}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
+        XHR.send(`company_id=${company_id}&user-token=${USER.token}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
         // Если коментарий успешно отправлен - закрыть форму
         XHR.onload = function () {
             // Разблокировать кнопку отправки
@@ -290,6 +291,8 @@ async function new_company() {
         let gets = '';
         // Наполнить строку значениями через цикл forEach
         INPUTS_LIST.forEach(input => gets += '&' + input.name + '=' + input.value);
+        // Добавть свой токен
+        gets += '&user_token=' + USER.token;
         // AJAX (fetch), запускаем функцию done со статусом выполения в аргументе
         fetch('server/ajax/set_company.php?' + gets).then(response => done(response.ok));
         function done(ok) {

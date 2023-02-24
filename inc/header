@@ -14,20 +14,10 @@
             </div>
         <?php endif ?>
         <a href="/" class="default-link">Компании</a>
-        <?php if (empty($_COOKIE['user-token'])) : ?>
-            <a href="#" class="default-link">Моя организация</a>
-            <a href="/auth.php" class="default-link">Войти</a>
-            <a href="/auth.php?reg=on" class="default-link">Зарегестрироваться</a>
-        <?php else : ?>
-            <span href="/server/logout.php" class="default-link" onclick="logout()">Выйти</span>
-            <script>
-                function logout() {
-                    document.cookie = 'user-token=; path=/; max-age=0';
-                    location.reload();
-                }
-            </script>
-        <?php endif ?>
-        </span>
+        <a href="#" class="default-link">Моя организация</a>
+        <a href="/auth.php" class="default-link only-guest-visible">Войти</a>
+        <a href="/auth.php?reg=on" class="default-link only-guest-visible">Зарегестрироваться</a>
+        <span class="default-link only-user-visible" id="logout-btn">Выйти</span>
     </nav>
 </header>
 <p class="default-btn hidden" id="show-all-companies-btn">Показать все компании</p>

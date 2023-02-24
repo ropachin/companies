@@ -16,7 +16,7 @@
     ?>
     <main>
         <div id="catalog"></div>
-        <a href="#" class="default-btn hidden" id="new_company_btn" onclick="new_company()">Новая компания</a>
+        <a href="#" class="default-btn only-user-visible" id="new_company_btn" onclick="new_company()">Новая компания</a>
     </main>
 </body>
 
