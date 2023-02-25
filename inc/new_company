@@ -24,8 +24,8 @@
     </form>
 </div>
 <style>
-    @media (width>480px){
-        #new-company-block>form{
+    @media (width>480px) {
+        #new-company-block>form {
             border-radius: 10px;
         }
     }
@@ -74,11 +74,12 @@
     /* Строка для уведомлений */
     #new-company-form-message {
         margin-bottom: 10px;
+        color: var(--logo-color);
     }
 
     /* Полоска загрузки */
-    #new-company-form-loading{
-        background-color: var(--logo-color);
+    #new-company-form-loading {
+        background: linear-gradient(var(--logo-color), var(--logo-dark-color));
         height: 20px;
         width: 0;
         transition: width 2s linear;

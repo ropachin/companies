@@ -12,9 +12,13 @@
     }
 }
 
-/* @media(width<480px) {
+@media(width<480px) {
 
-} */
+    .default-btn,
+    .default-link {
+        cursor: context-menu !important;
+    }
+}
 
 * {
     box-sizing: border-box;
@@ -33,7 +37,7 @@
 .default-btn {
     display: block;
     padding: 8px 16px;
-    background-color: var(--logo-color);
+    background: linear-gradient(var(--logo-color), var(--logo-dark-color));
     color: #000;
     border-radius: 5px;
     border: none;
@@ -42,11 +46,11 @@
 }
 
 .default-btn:hover {
-    background-color: var(--logo-dark-color);
+    background: linear-gradient(var(--logo-dark-color), var(--logo-color));
 }
 
 .default-btn:active:not(:disabled) {
-    background-color: transparent;
+    background: transparent;
     outline: 1px solid;
     color: var(--logo-color);
 }
