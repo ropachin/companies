@@ -2,7 +2,7 @@
 include '../../inc/db_connect';
 // Полученные от пользователя POST параметры
 $email = trim($_POST['email']);
-$password = trim($_POST['password']);
+$password = md5(trim($_POST['password']) . '*-_-*');
 // Массив с результатом для отправки клиенту
 $response = ['status' => 400, 'data' => null];
 // Чтение данных пользовател с БД

@@ -4,7 +4,7 @@ include '../../inc/db_connect';
 $data = json_decode(file_get_contents('php://input'), false);
 $name = trim($data->name);
 $email = trim($data->email);
-$password = trim($data->password);
+$password = md5(trim($data->password).'*-_-*') ;
 // Проверка не занят ли email
 $email_users = $mysql->query("SELECT `email` FROM `users` WHERE `email` = '$email'");
 if ($email_users->num_rows) {
