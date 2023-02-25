@@ -20,4 +20,3 @@
         <span class="default-link only-user-visible" id="logout-btn">Выйти</span>
     </nav>
 </header>
-<p class="default-btn hidden" id="show-all-companies-btn">Показать все компании</p>

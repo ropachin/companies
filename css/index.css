@@ -7,8 +7,8 @@
         grid-template-columns: 1fr !important;
     }
 
-    #new_company_btn{
-        margin-inline: auto ;
+    #new_company_btn {
+        margin-inline: auto;
     }
 
     .catalog-company-card {
@@ -54,7 +54,15 @@
     }
 }
 
+#index-control-panel {
+    margin-bottom: 20px;
+    text-align: center;
+}
 
+#index-control-panel>*{
+    display: inline-block;
+    margin-inline: 10px;
+}
 
 /* Блок содержащий карточки компаний */
 #catalog {
@@ -119,13 +127,8 @@
     filter: brightness(8);
 }
 
-.card-trash-icon:hover{
+.card-trash-icon:hover {
     filter: none;
-}
-
-/* Кнопка "Показать все компании" */
-#show-all-companies-btn {
-    margin: 20px auto;
 }
 
 /* Поиск в шапке */

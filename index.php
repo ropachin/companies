@@ -15,8 +15,11 @@
     include 'inc/float_comment';
     ?>
     <main>
+        <div id="index-control-panel">
+            <a href="#" class="default-btn only-user-visible" id="new_company_btn" onclick="new_company()">Новая компания</a>
+            <p class="default-btn hidden" id="show-all-companies-btn">Показать все компании</p>
+        </div>
         <div id="catalog"></div>
-        <a href="#" class="default-btn only-user-visible" id="new_company_btn" onclick="new_company()">Новая компания</a>
     </main>
 </body>
 

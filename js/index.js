@@ -361,4 +361,5 @@ async function new_company() {
 async function remove_company(id, owner, card) {
     await fetch(`server/ajax/remove_company.php?id=${id}&owner=${owner}&token=${USER.token}`);
     card.remove();
+    notification('Компания удалена');
 }
