@@ -264,6 +264,8 @@ function add_comment(company_id, name) {
                     COMMENT_SUBMIT_BTN.removeAttribute('disabled');
                     // Вернуть скрытому блоку нормальный размер
                     COMMENT_DIALOG.style.transform = 'none'
+                    // Уведомление
+                    notification('Коментарий добавлен');
                 }
 
             }
@@ -329,12 +331,14 @@ async function new_company() {
         function done(ok) {
             // Если успешно
             if (ok) {
-                MESSAGE.textContent = 'Компания добавлена';
+                MESSAGE.innerHTML = 'Запись данных...';
                 LINE.style.width = '100%';
                 // Ждём когда полоска полностью растянется
                 LINE.ontransitionend = function () {
                     // Закрыть окно
                     FORM.close();
+                    // Вывести уведомление
+                    notification('Новая компания успешно добавлена');
                     // Обновить каталог карточек компаний
                     show_all_companies();
                 }

@@ -33,6 +33,38 @@
     display: none !important;
 }
 
+#main-notification {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 500ms;
+    width: max-content;
+    max-width: 95%;
+    margin-inline: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    background-color: var(--header-color-bg);
+}
+
+#main-notification>div {
+    position: relative;
+    top: 1px;
+    height: 2px;
+    transition: all 5s linear;
+    background-color: var(--logo-color);
+    transform: scaleX(0);
+}
+
+#main-notification>span {
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    padding: 10px 5%;
+    white-space: break-spaces;
+}
+
 /* Стандартный стиль кнопки */
 .default-btn {
     display: block;
