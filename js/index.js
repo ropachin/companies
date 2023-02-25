@@ -283,8 +283,8 @@ async function new_company() {
     const PARENT_BLOCK = document.getElementById('new-company-block');
     // Форма для заполнения данных с новой компанией
     const FORM_BLOCK = PARENT_BLOCK.querySelector('form');
-    // Все input элементы
-    const INPUTS_LIST = PARENT_BLOCK.querySelectorAll('input');
+    // Все input + textarea элементы
+    const INPUTS_LIST = PARENT_BLOCK.querySelectorAll('input, textarea');
     // Строка для уведомлений
     const MESSAGE = document.getElementById('new-company-form-message');
     // Полоска зашрузки
@@ -307,12 +307,14 @@ async function new_company() {
                 break;
             }
         }
+        // Закрыть форму
         FORM.close();
     }
     // При отправке формы
     PARENT_BLOCK.onsubmit = e => {
         // Отключить стандартную отправку формы
         e.preventDefault();
+        // Заблокировать кнопку "Отправить"
         SUBMIT_BTN.setAttribute('disabled', '');
         // Строка для сбора значений с форм
         let gets = '';
@@ -321,7 +323,9 @@ async function new_company() {
         // Добавть свой токен
         gets += '&user_token=' + USER.token;
         // AJAX (fetch), запускаем функцию done со статусом выполения в аргументе
-        fetch('server/ajax/set_company.php?' + gets).then(response => done(response.ok));
+        fetch('server/ajax/set_company.php?' + gets)
+            .then(response => done(response.ok))
+            .catch(submit_error);
         function done(ok) {
             // Если успешно
             if (ok) {
@@ -336,7 +340,15 @@ async function new_company() {
                 }
             }
             // Если отправить не удалось
-            else MESSAGE.textContent = 'Не удалось добавить компанию';
+            else {
+                MESSAGE.textContent = 'Не удалось добавить компанию';
+                SUBMIT_BTN.removeAttribute('disabled');
+            }
+        }
+
+        function submit_error() {
+            MESSAGE.textContent = 'Не удалось добавить компанию';
+            SUBMIT_BTN.removeAttribute('disabled');
         }
     }
 }

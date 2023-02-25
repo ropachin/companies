@@ -9,11 +9,16 @@ const LOGOUT_BTN = document.getElementById('logout-btn');
     ? ONLY_GUEST.forEach(el => el.remove())
     : ONLY_USER.forEach(el => el.remove());
 
-// Обьект с данными пользователя
+// Обьект с данными пользователя или пустой обьект
 const USER = JSON.parse(localStorage.getItem('user')) ?? new Object;
 
 // Разлогиниться при нажатии на кнопку
 LOGOUT_BTN.onclick = function () {
     localStorage.removeItem('user');
     location.reload();
+}
+
+// Класс показать уведомление
+class notification{
+    
 }

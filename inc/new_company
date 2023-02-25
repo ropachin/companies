@@ -12,8 +12,8 @@
                 required>
             <input class="default-input-text" type="text" name="CEO" placeholder="Генеральный директор" minlength="5"
                 maxlength="55" required>
-            <textarea class="default-input-text" name="" id="" rows="5" width="100%"
-                placeholder="Общая информация"></textarea>
+            <textarea class="default-input-text" name="info" id="" rows="5" width="100%"
+                placeholder="Общая информация (не обязательно)" maxlength="500"></textarea>
             <p id="new-company-form-message">&nbsp</p>
             <p id="new-company-form-loading"></p>
             <div>

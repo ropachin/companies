@@ -21,6 +21,8 @@ $company = $mysql->query("SELECT * FROM `companies` WHERE `id` = '{$_GET['id']}'
     <main>
         <h1 id="company-title"><?= $company['name'] ?></h1>
         <dl id="company-details">
+            <dt>Полное наименование:</dt>
+            <dd><?= $company['name'] ?> </dd>
             <dt>ИНН:</dt>
             <dd><?= $company['TIN'] ?> </dd>
             <dt>Генеральный директор:</dt>
