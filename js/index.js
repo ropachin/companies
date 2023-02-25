@@ -271,6 +271,11 @@ async function new_company() {
     const NEW_COMPANY_CLOSE_BTN = document.getElementById('new-company-close-btn');
     // Кнопка "Отправить"
     const NEW_COMPANY_SUBMIT_BTN = document.getElementById('new-company-submit-btn');
+    // При нажатии на клавишу "Escape" (эмуляция клика на "Отмена")
+    document.onkeydown = e => {
+        if (e.key == 'Escape')
+            NEW_COMPANY_CLOSE_BTN.dispatchEvent(new Event('click'));
+    }
     // При нажатии на кнопку "Отмена"
     NEW_COMPANY_CLOSE_BTN.onclick = function () {
         // Проверка, есть ли тект в каком либо input элементе
