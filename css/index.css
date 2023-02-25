@@ -7,6 +7,10 @@
         grid-template-columns: 1fr !important;
     }
 
+    #new_company_btn{
+        margin-inline: auto ;
+    }
+
     .catalog-company-card {
         border-radius: 0 !important;
     }
@@ -173,6 +177,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 1;
 }
 
 #search-block>fieldset {

@@ -24,7 +24,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #00000099;
+        background-color: #000000c0;
         text-align: center;
     }
 

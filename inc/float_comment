@@ -20,6 +20,17 @@
 
 
 <style>
+    @media (width<=480px) {
+        dialog{
+            width: 100vw;
+            margin-inline: auto;
+        }
+        dialog>textarea{
+            width: 100%;
+            font-size: 16px;
+        }
+    }
+
     dialog {
         background-color: var(--body-color-bg);
         border: none;
