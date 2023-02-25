@@ -30,6 +30,7 @@ LOGIN_FORM.onsubmit = e => {
                     AUTH_MESSAGE.style.color = '#0f0';
                     AUTH_MESSAGE.textContent = 'Вы успешно вошли в систему';
                     LOGIN_FORM.querySelectorAll('input').forEach(input => input.setAttribute('disabled', ''));
+                    LOGIN_FORM.querySelector('button').setAttribute('disabled', '');
                     let timer = 4
                     LOGIN_TIMER.textContent = 'Переадресация через ' + --timer;
                     setInterval(() => {
