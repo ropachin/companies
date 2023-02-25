@@ -3,17 +3,12 @@
     <form>
         <h2>Новая компания</h2>
         <div>
-            <input class="default-input-text" type="text" name="name" placeholder="Название компании" required>
-            <input class="default-input-text" type="text" name="TIN" placeholder="ИНН" minlength="10" maxlength="10"
-                required>
-            <input class="default-input-text" type="text" name="address" placeholder="Адрес" minlength="10"
-                maxlength="200" required>
-            <input class="default-input-text" type="tel" name="tel" placeholder="Телефон" minlength="5" maxlength="12"
-                required>
-            <input class="default-input-text" type="text" name="CEO" placeholder="Генеральный директор" minlength="5"
-                maxlength="55" required>
-            <textarea class="default-input-text" name="info" id="" rows="5" width="100%"
-                placeholder="Общая информация (не обязательно)" maxlength="500"></textarea>
+            <input class="default-input-text" type="text" name="name" placeholder="Название компании" minlength="3" maxlength="50" required>
+            <input class="default-input-text" type="text" name="TIN" placeholder="ИНН" minlength="10" maxlength="10" required>
+            <input class="default-input-text" type="text" name="address" placeholder="Адрес" minlength="10" maxlength="250" required>
+            <input class="default-input-text" type="tel" name="tel" placeholder="Телефон" minlength="5" maxlength="12" required>
+            <input class="default-input-text" type="text" name="CEO" placeholder="Генеральный директор" minlength="5" maxlength="50" required>
+            <textarea class="default-input-text" name="info" id="" rows="5" width="100%" placeholder="Общая информация (не обязательно)" maxlength="500"></textarea>
             <p id="new-company-form-message">&nbsp</p>
             <p id="new-company-form-loading"></p>
             <div>
