@@ -252,7 +252,9 @@ function add_comment(company_id, name) {
         XHR.onload = function () {
             // Если коментарий успешно записан в БД
             if (XHR.status == 200 && XHR.response == 1) {
+                // Сжать окно
                 COMMENT_DIALOG.style.transform = 'scale(0)';
+                // Когда окно полностью сжато
                 COMMENT_DIALOG.ontransitionend = function () {
                     // Очистить форму 
                     COMMENT_TEXTAREA.value = '';

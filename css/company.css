@@ -5,16 +5,21 @@
     font-weight: normal;
 }
 
-#company-details{
+#company-details {
     font-size: 18px;
 }
 
-#company-details>dt{
+#company-details>dt {
     margin-top: 20px;
     color: var(--logo-color);
 }
 
-#company-details>dd::selection{
+#company-details>dd {
+    overflow-wrap: anywhere;
+    white-space: break-spaces;
+}
+
+#company-details>dd::selection {
     background-color: var(--logo-color);
     color: #000;
 }
