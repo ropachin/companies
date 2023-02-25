@@ -8,7 +8,7 @@ const REG_INPUTS = REG_FORM.querySelectorAll('input');
 // Node List с формами для ввода пароля
 const REG_PASS_FORMS = REG_FORM.querySelectorAll('input[type=password]');
 // Кнопка "submit" формы
-const AUTH_SUBMIT_BTN = REG_FORM.querySelector('input[type=submit]');
+const AUTH_SUBMIT_BTN = REG_FORM.querySelector('button');
 // Текстовое поле для вывода уведомления
 const AUTH_MESSAGE = document.getElementById('auth-message');
 // ФЛАГ есть ли ошибки в форме
@@ -77,8 +77,43 @@ function auth_error_message(text = '&nbsp') { AUTH_MESSAGE.innerHTML = text }
 // ОТПРАВКА ДАННЫХ НА СЕРВЕР
 REG_FORM.onsubmit = e => {
     e.preventDefault();
-    if (is_submit_allow)
-        REG_FORM.submit();
+    if (is_submit_allow) {
+        // Оъект для сбора данных с формы
+        let sendData = new Object;
+        // Наполение объекта данными
+        REG_INPUTS.forEach(el => sendData[el.name] = el.value);
+        sendData = JSON.stringify(sendData)
+        // AJAX fetch, методом "POST"
+        fetch('/server/ajax/reg.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: sendData
+        }).then(response => response.json())
+            .then(json => reg_complete(json))
+            .catch(err => console.log(err));
+        // Функция - регистрация выполнена
+        function reg_complete(response) {
+            // Запись данных пользователя в localStorage
+            localStorage.setItem('user', JSON.stringify(response));
+            // Заблокировать форму
+            REG_INPUTS.forEach(input => input.setAttribute('disabled', ''));
+            // Заблокировать кнопку
+            AUTH_SUBMIT_BTN.setAttribute('disabled', '');
+            auth_error_message('Загрука.');
+            // Курсор "загрузка"
+            // document.body.style.cursor = 'wait'
+            // Редирект на главную
+            let timer = 4;
+            setInterval(() => {
+                if (timer-- == 0) location.href = '/';
+                else AUTH_MESSAGE.textContent += '.';
+
+
+
+            }, 500);
+        }
+        // Функция регистрация завершена с ошибкой
+    }
 }
 // END ОТПРАВКА ДАННЫХ НА СЕРВЕР
 //-------------------------------------------------------------------------------------------------
