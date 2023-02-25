@@ -272,24 +272,26 @@ async function new_company() {
 
     // Скрипт формы
     // Родительский блок с формой
-    const NEW_COMPANY_BLOCK = document.getElementById('new-company-block');
+    const PARENT_BLOCK = document.getElementById('new-company-block');
     // Форма для заполнения данных с новой компанией
-    NEW_COMPANY_BLOCK.querySelector('form');
+    const FORM_BLOCK = PARENT_BLOCK.querySelector('form');
     // Все input элементы
-    const INPUTS_LIST = NEW_COMPANY_BLOCK.querySelectorAll('input');
+    const INPUTS_LIST = PARENT_BLOCK.querySelectorAll('input');
     // Строка для уведомлений
     const MESSAGE = document.getElementById('new-company-form-message');
+    // Полоска зашрузки
+    const LINE = document.getElementById('new-company-form-loading');
     // Кнопка "Отмена"
-    const NEW_COMPANY_CLOSE_BTN = document.getElementById('new-company-close-btn');
+    const CLOSE_BTN = document.getElementById('new-company-close-btn');
     // Кнопка "Отправить"
-    const NEW_COMPANY_SUBMIT_BTN = document.getElementById('new-company-submit-btn');
+    const SUBMIT_BTN = document.getElementById('new-company-submit-btn');
     // При нажатии на клавишу "Escape" (эмуляция клика на "Отмена")
     document.onkeydown = e => {
         if (e.key == 'Escape')
-            NEW_COMPANY_CLOSE_BTN.dispatchEvent(new Event('click'));
+            CLOSE_BTN.dispatchEvent(new Event('click'));
     }
     // При нажатии на кнопку "Отмена"
-    NEW_COMPANY_CLOSE_BTN.onclick = function () {
+    CLOSE_BTN.onclick = function () {
         // Проверка, есть ли тект в каком либо input элементе
         for (input of INPUTS_LIST) {
             if (input.value != '') {
@@ -300,10 +302,10 @@ async function new_company() {
         FORM.close();
     }
     // При отправке формы
-    NEW_COMPANY_BLOCK.onsubmit = e => {
+    PARENT_BLOCK.onsubmit = e => {
         // Отключить стандартную отправку формы
         e.preventDefault();
-        NEW_COMPANY_SUBMIT_BTN.setAttribute('disabled', '');
+        SUBMIT_BTN.setAttribute('disabled', '');
         // Строка для сбора значений с форм
         let gets = '';
         // Наполнить строку значениями через цикл forEach
@@ -315,8 +317,12 @@ async function new_company() {
         function done(ok) {
             // Если успешно
             if (ok) {
-                FORM.close();
-                show_all_companies();
+                MESSAGE.textContent = 'Коментарий отправлен';
+                LINE.style.width = '100%';
+                LINE.ontransitionend = function () {
+                    FORM.close();
+                    show_all_companies();
+                }
             }
             // Если отправить не удалось
             else MESSAGE.textContent = 'Не удалось добавить компанию';

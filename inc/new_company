@@ -15,6 +15,7 @@
             <textarea class="default-input-text" name="" id="" rows="5" width="100%"
                 placeholder="Общая информация"></textarea>
             <p id="new-company-form-message">&nbsp</p>
+            <p id="new-company-form-loading"></p>
             <div>
                 <button type="button" id="new-company-close-btn" class="default-btn">Отмена</button>
                 <button type="submit" id="new-company-submit-btn" class="default-btn">Добавить</button>
@@ -73,6 +74,15 @@
     /* Строка для уведомлений */
     #new-company-form-message {
         margin-bottom: 10px;
-        color: var(--logo-color);
+    }
+
+    /* Полоска загрузки */
+    #new-company-form-loading{
+        background-color: var(--logo-color);
+        height: 20px;
+        width: 0;
+        transition: width 2s linear;
+        margin: 0;
+        border-radius: 7px;
     }
 </style>
