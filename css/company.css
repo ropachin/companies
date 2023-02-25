@@ -1,0 +1,20 @@
+#company-title {
+    letter-spacing: 1px;
+    color: var(--logo-color);
+    text-align: center;
+    font-weight: normal;
+}
+
+#company-details{
+    font-size: 18px;
+}
+
+#company-details>dt{
+    margin-top: 20px;
+    color: var(--logo-color);
+}
+
+#company-details>dd::selection{
+    background-color: var(--logo-color);
+    color: #000;
+}
