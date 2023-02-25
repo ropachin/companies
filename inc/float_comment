@@ -1,15 +1,15 @@
 <dialog id="comment-dialog">
     <h3></h3>
     <p>Оставьте отзыв</p>
-    <textarea cols="30" rows="10" required></textarea>
+    <textarea rows="10" required></textarea>
     <p id="comment-visibility-caption">Кто сможет видеть ваш отзыв?</p>
     <div id="comment-visibility-settings">
         <input type="radio" name="comment_visibility" value="all" id="comment-visibility-radio-all" checked>
-        <label for="comment-visibility-radio-all">Все</label>
+        <label class="default-link" for="comment-visibility-radio-all">Все</label>
         <input type="radio" name="comment_visibility" value="сolleagues" id="comment-visibility-radio-сolleagues">
-        <label for="comment-visibility-radio-сolleagues">Коллеги</label>
+        <label class="default-link" for="comment-visibility-radio-сolleagues">Коллеги</label>
         <input type="radio" name="comment_visibility" value="self" id="comment-visibility-radio-self">
-        <label for="comment-visibility-radio-self">Только я</label>
+        <label class="default-link" for="comment-visibility-radio-self">Только я</label>
     </div>
     <hr>
     <div id="dialog-buttons">
@@ -38,6 +38,8 @@
         color: #fff;
         text-align: center;
         color: #bbb;
+        width: min(480px, 100%);
+        transition: all 300ms;
     }
 
     dialog::backdrop {
@@ -57,6 +59,7 @@
         display: block;
         margin: 15px 0;
         border-radius: 4px;
+        width: 100%;
     }
 
     dialog>textarea:focus {

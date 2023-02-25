@@ -250,14 +250,20 @@ function add_comment(company_id, name) {
         XHR.send(`company_id=${company_id}&user-token=${USER.token}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
         // Если коментарий успешно отправлен - закрыть форму
         XHR.onload = function () {
-            // Разблокировать кнопку отправки
-            COMMENT_SUBMIT_BTN.removeAttribute('disabled');
             // Если коментарий успешно записан в БД
             if (XHR.status == 200 && XHR.response == 1) {
-                // Очистить форму 
-                COMMENT_TEXTAREA.value = '';
-                // Закрыть окно
-                COMMENT_DIALOG.close();
+                COMMENT_DIALOG.style.transform = 'scale(0)';
+                COMMENT_DIALOG.ontransitionend = function () {
+                    // Очистить форму 
+                    COMMENT_TEXTAREA.value = '';
+                    // Закрыть окно
+                    COMMENT_DIALOG.close();
+                    // Разблокировать кнопку отправки
+                    COMMENT_SUBMIT_BTN.removeAttribute('disabled');
+                    // Вернуть скрытому блоку нормальный размер
+                    COMMENT_DIALOG.style.transform = 'none'
+                }
+
             }
         }
     }
@@ -317,10 +323,13 @@ async function new_company() {
         function done(ok) {
             // Если успешно
             if (ok) {
-                MESSAGE.textContent = 'Коментарий отправлен';
+                MESSAGE.textContent = 'Компания добавлена';
                 LINE.style.width = '100%';
+                // Ждём когда полоска полностью растянется
                 LINE.ontransitionend = function () {
+                    // Закрыть окно
                     FORM.close();
+                    // Обновить каталог карточек компаний
                     show_all_companies();
                 }
             }

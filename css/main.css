@@ -63,6 +63,7 @@
 /* Стандартный стиль ссылки */
 .default-link {
     color: #bbb;
+    cursor: pointer;
 }
 
 .default-link:hover {
