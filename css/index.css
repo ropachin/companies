@@ -1,13 +1,13 @@
 @media (width <=480px) {
-    main{
+    main {
         padding-inline: 0;
     }
-    
+
     #catalog {
         grid-template-columns: 1fr !important;
     }
 
-    .catalog-company-card{
+    .catalog-company-card {
         border-radius: 0 !important;
     }
 
@@ -26,7 +26,7 @@
         border-radius: 0 !important;
     }
 
-    #header-search-icon>div>ul>li{
+    #header-search-icon>div>ul>li {
         padding: 0 !important;
     }
 
@@ -71,6 +71,7 @@
     box-shadow: 0 0 4px #00000090;
     text-shadow: -1px 1px 1px #000;
     white-space: break-spaces;
+    position: relative;
 }
 
 .catalog-company-card>*>span {
@@ -102,6 +103,23 @@
     cursor: pointer;
 }
 
+/* Значок "Удалить" */
+.card-trash-icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+    filter: brightness(8);
+}
+
+.card-trash-icon:hover{
+    filter: none;
+}
+
 /* Кнопка "Показать все компании" */
 #show-all-companies-btn {
     margin: 20px auto;
@@ -129,6 +147,7 @@
     transition: all 50ms linear;
     visibility: hidden;
     opacity: 0;
+    z-index: 1;
 }
 
 #header-search-icon>div>ul {

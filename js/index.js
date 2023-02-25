@@ -74,7 +74,19 @@ class CompanyCard {
         CONTROL.append(COMMENT, BUTTON);
         CARD.append(NAME, HR, TIN, ADDRESS, TEL, CEO, CONTROL);
         PARENT.append(CARD);
-        // Если пользователь владелец компании
+        // Если пользователь владелец компании добавить значок мусорки
+        if (this.owner === USER.id) {
+            const ID = this.id;
+            const OWNER = this.owner;
+            const TRASH = document.createElement('div');
+            TRASH.classList.add('card-trash-icon');
+            TRASH.style.backgroundImage = 'url(src/svg/trash.svg)';
+            CARD.append(TRASH);
+            TRASH.onclick = function () {
+                if (confirm('Компания будет удалена. Продолжить?'))
+                    remove_company(ID, OWNER, CARD);
+            }
+        }
 
     }
 }
@@ -310,4 +322,10 @@ async function new_company() {
             else MESSAGE.textContent = 'Не удалось добавить компанию';
         }
     }
+}
+
+// Функция - удалить компанию
+async function remove_company(id, owner, card) {
+    await fetch(`server/ajax/remove_company.php?id=${id}&owner=${owner}&token=${USER.token}`);
+    card.remove();
 }
