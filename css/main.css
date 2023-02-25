@@ -18,6 +18,23 @@
     .default-link {
         cursor: context-menu !important;
     }
+
+    header>nav {
+        display: grid !important;
+        position: absolute;
+        z-index: 1;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background-color: var(--body-color-bg);
+        box-shadow: 0 1px 6px var(--header-color-bg);
+    }
+
+    header>nav>* {
+        padding: 0 10px;
+        border-bottom: 2px groove var(--block-color-bg);
+        margin: 0 !important;
+    }
 }
 
 * {

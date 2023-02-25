@@ -15,24 +15,14 @@
         border-radius: 0 !important;
     }
 
-    #header-search-icon {
-        cursor: default;
-        position: initial !important;
+    #header-search-icon{
+        display: none;
     }
 
-    #header-search-icon:hover div {
-        width: 100vw;
-        left: 0;
-        right: 0;
+    #mobile-search-btn{
+        display: block !important;
     }
 
-    #header-search-icon>div>ul {
-        border-radius: 0 !important;
-    }
-
-    #header-search-icon>div>ul>li {
-        padding: 0 !important;
-    }
 
     #search-block>fieldset {
         margin: 0;

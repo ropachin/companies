@@ -12,6 +12,7 @@
                     </ul>
                 </div>
             </div>
+            <span class="default-link hidden" id="mobile-search-btn">Поиск</span>
         <?php endif ?>
         <a href="/" class="default-link">Компании</a>
         <a href="#" class="default-link">Моя организация</a>

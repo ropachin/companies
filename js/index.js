@@ -136,12 +136,17 @@ show_all_companies();
 // ПОИСК
 // Меню поиска
 const SEARCH_LIST = document.querySelectorAll('#header-search-icon>div>ul>li');
+// Мобильная кнопка для поиска
+const MOBILE_SEARCH_BTN = document.getElementById('mobile-search-btn');
 // Окно поиска
 const SEARCH_BLOCK = document.getElementById('search-block');
 // Форма ввода поиска
 const SEARCH_INPUT = SEARCH_BLOCK.querySelector('input')
 // Кнопка "Закрыть" в поиске
 const SEARCH_CLOSE_BTN = SEARCH_BLOCK.querySelector('button');
+// При нажатии на кнопку для мобильного поиска
+MOBILE_SEARCH_BTN.onclick = () => SEARCH_LIST[0].dispatchEvent(new Event('click'));
+// При нажатии на одну из кнопок из списка поиска
 for (elem of SEARCH_LIST) {
     elem.onclick = function () {
         // Получить условие поиска из атрибута кнопки на которую нажал польхователь
