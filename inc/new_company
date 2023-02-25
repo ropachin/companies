@@ -4,10 +4,16 @@
         <h2>Новая компания</h2>
         <div>
             <input class="default-input-text" type="text" name="name" placeholder="Название компании" required>
-            <input class="default-input-text" type="text" name="TIN" placeholder="ИНН" minlength="10" maxlength="10" required>
-            <input class="default-input-text" type="text" name="address" placeholder="Адрес" minlength="10" maxlength="200" required>
-            <input class="default-input-text" type="tel" name="tel" placeholder="Телефон" minlength="5" maxlength="12" required>
-            <input class="default-input-text" type="text" name="CEO" placeholder="Генеральный директор" minlength="5" maxlength="55" required>
+            <input class="default-input-text" type="text" name="TIN" placeholder="ИНН" minlength="10" maxlength="10"
+                required>
+            <input class="default-input-text" type="text" name="address" placeholder="Адрес" minlength="10"
+                maxlength="200" required>
+            <input class="default-input-text" type="tel" name="tel" placeholder="Телефон" minlength="5" maxlength="12"
+                required>
+            <input class="default-input-text" type="text" name="CEO" placeholder="Генеральный директор" minlength="5"
+                maxlength="55" required>
+            <textarea class="default-input-text" name="" id="" rows="5" width="100%"
+                placeholder="Общая информация"></textarea>
             <p id="new-company-form-message">&nbsp</p>
             <div>
                 <button type="button" id="new-company-close-btn" class="default-btn">Отмена</button>
@@ -17,6 +23,13 @@
     </form>
 </div>
 <style>
+    @media (width>480px){
+        #new-company-block>form{
+            border-radius: 10px;
+        }
+    }
+
+
     #new-company-block {
         display: grid;
         position: fixed;
@@ -32,14 +45,18 @@
         place-self: center;
         background-color: var(--body-color-bg);
         padding: 25px;
-        border-radius: 10px;
+        width: min(480px, 100%);
     }
 
     #new-company-block>form>div>input {
         display: block;
         width: 100%;
-        min-width: 480px;
         margin-block-end: 10px;
+    }
+
+    #new-company-block>form>div>textarea {
+        width: 100%;
+        resize: none;
     }
 
     #new-company-block>form>div>button {
