@@ -9,8 +9,9 @@ $comments = $mysql->query("SELECT * FROM `comments` WHERE `company_id` = '$id' O
 function get_name($user_id)
 {
     global $mysql;
-    $name = $mysql->query("SELECT `name` FROM `users` WHERE `id` = '$user_id'");
-    return $name->fetch_row()[0];
+    return ($user_id)
+        ? $mysql->query("SELECT `name` FROM `users` WHERE `id` = '$user_id'")->fetch_row()[0]
+        : 'Гость';
 }
 
 ?>

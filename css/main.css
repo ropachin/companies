@@ -1,9 +1,17 @@
+/* css переменные */
 :root {
     --body-color-bg: #21262d;
     --header-color-bg: #0d1117;
     --block-color-bg: #2e353e;
     --logo-color: #ffc134;
     --logo-dark-color: #ffb300;
+}
+
+/* Правила для фирменного цвета сайта */
+@property --logo-color{
+    inherits: false;
+    syntax: '<color>';
+    initial-value: #ffc134;
 }
 
 @media(width<920px) {

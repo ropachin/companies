@@ -9,6 +9,7 @@
 
     #company-comments {
         grid-template-columns: 1fr !important;
+        width: revert !important;
     }
 }
 
@@ -50,6 +51,8 @@
     display: grid;
     grid-template-columns: repeat(2, 480px);
     gap: 30px;
+    width: max-content;
+    margin: 0 auto;
 }
 
 /* Форма для создания коментария */

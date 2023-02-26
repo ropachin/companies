@@ -41,7 +41,7 @@ COMPANY_COMMENT_BUTTON.onclick = function (e) {
             COMMENT.classList.add('company-comment');
             const LEGEND = document.createElement('legend');
             LEGEND.classList.add('company-comment-name');
-            LEGEND.textContent = USER.name;
+            LEGEND.textContent = USER.name ?? 'Вы';
             const VISIBILITY_P = document.createElement('p');
             VISIBILITY_P.classList.add('company-comment-visibility');
             VISIBILITY_P.textContent = VISIBILITYS.get(VISIBILITY.value.trim());
