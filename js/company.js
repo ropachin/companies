@@ -2,8 +2,10 @@
 const VISIBILITYS = new Map([['all', 'Видят все'], ['сolleagues', 'Коллеги'], ['self', 'Только я']]);
 // Форма отправки коментария
 const COMPANY_COMMENT_FORM = document.getElementById('company-comment-form');
+// Кнопка "Отправить" коментарий
+const COMPANY_COMMENT_BUTTON = COMPANY_COMMENT_FORM.querySelector('button');
 // Отправка коментария
-COMPANY_COMMENT_FORM.onclick = function (e) {
+COMPANY_COMMENT_BUTTON.onclick = function (e) {
     // Textarea для коментария
     const TEXTAREA = COMPANY_COMMENT_FORM.querySelector('textarea');
     const VISIBILITY = COMPANY_COMMENT_FORM.querySelector('input[name=comment_visibility]:checked')
