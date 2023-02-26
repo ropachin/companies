@@ -4,7 +4,7 @@ $id = $_GET['id'];
 // Получаем данные о компании из бд и сразу конверируем mysqli обьект в ассоциативный массив
 $company = $mysql->query("SELECT * FROM `companies` WHERE `id` = '$id'")->fetch_assoc();
 // Получаем коментарии
-$comments = $mysql->query("SELECT * FROM `comments` WHERE `company_id` = '$id'");
+$comments = $mysql->query("SELECT * FROM `comments` WHERE `company_id` = '$id' ORDER BY `id` DESC");
 // Функция получить имя автора коментария по его id
 function get_name($user_id)
 {
@@ -48,7 +48,7 @@ function get_name($user_id)
             <fieldset id="company-comment-form" class="company-comment">
                 <legend>Новый коментарий:</legend>
                 <textarea class="default-input-text" name="comment" id="company-comment-input" rows="5" placeholder="Вы можете оставить ваш коментарий здесь"></textarea>
-                <input class="default-btn" type="submit" value="Отправить">
+                <button class="default-btn">Отправить</button>
                 <p id="comment-form-settings-caption">Кто может читать?</p>
                 <div>
                     <input type="radio" name="comment_visibility" value="all" id="comment-visibility-radio-all" checked>
@@ -80,6 +80,10 @@ function get_name($user_id)
             <?php endwhile ?>
         </div>
     </main>
+    <script>
+        // ID компании
+        const COMPANY_ID = '<?= $company['id'] ?>';
+    </script>
 </body>
 
 </html>

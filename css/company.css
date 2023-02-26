@@ -1,11 +1,14 @@
+:root {
+    --main-border: 2px groove var(--block-color-bg);
+}
+
 @media (width<=480px) {
-    #company-comments {
-        grid-template-columns: 1fr !important;
+    main {
+        padding-inline: 0 !important;
     }
 
-    #company-comments>fieldset {
-        border: none !important;
-        margin-top: 20px;
+    #company-comments {
+        grid-template-columns: 1fr !important;
     }
 }
 
@@ -19,7 +22,8 @@
 
 #company-details {
     font-size: 18px;
-    border-bottom: 1px groove var(--body-color-bg);
+    border-bottom: var(--main-border);
+    padding: 20px 5px 50px;
     padding-bottom: 50px;
     margin-bottom: 50px;
 }
@@ -47,7 +51,7 @@
 }
 
 /* Форма для создания коментария */
-#company-comment-form{
+#company-comment-form {
     padding: 10px;
 }
 
@@ -56,12 +60,12 @@
     font-size: 18px;
 }
 
-#company-comment-form>input {
+#company-comment-form>button {
     margin: 10px auto 25px;
 }
 
 /* Надпись над настройками видемости */
-#company-comment-form>input + p{
+#company-comment-form>button+p {
     color: #bbb;
     text-align: center;
     margin-bottom: 8px;
@@ -83,8 +87,9 @@
     color: var(--logo-color);
 }
 
+/* Каждый блок с коментарием */
 .company-comment {
-    border-color: var(--body-color-bg);
+    border: var(--main-border);
     border-radius: 4px;
     padding-block: 0;
     position: relative;
@@ -104,6 +109,11 @@
 .company-comment-text {
     white-space: break-spaces;
     font-style: italic;
+}
+
+.company-comment-text::selection {
+    background-color: var(--logo-color);
+    color: #000;
 }
 
 /* Дата коментария */

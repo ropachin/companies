@@ -252,7 +252,7 @@ function add_comment(company_id, name) {
         const XHR = new XMLHttpRequest();
         XHR.open('POST', 'server/ajax/set_comment.php')
         XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        XHR.send(`company_id=${company_id}&user-token=${USER.token}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
+        XHR.send(`company_id=${company_id}&token=${USER.token}&visibility=${VISIBILITY}&text=${COMMENT_TEXTAREA.value}`);
         // Если коментарий успешно отправлен - закрыть форму
         XHR.onload = function () {
             // Если коментарий успешно записан в БД
