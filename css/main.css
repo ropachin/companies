@@ -7,7 +7,7 @@
     --logo-dark-color: #ffb300;
 }
 
-/* Правила для фирменного цвета сайта */
+/* Защитное правило для фирменного цвета сайта */
 @property --logo-color{
     inherits: false;
     syntax: '<color>';

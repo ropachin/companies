@@ -1,10 +1,11 @@
 <?php
+session_start();
 include '../../inc/db_connect';
 // Принять json строку с данными пользователя
 $data = json_decode(file_get_contents('php://input'), false);
 $name = trim($data->name);
 $email = trim($data->email);
-$password = md5(trim($data->password).'*-_-*') ;
+$password = md5(trim($data->password) . '*-_-*');
 // Проверка не занят ли email
 $email_users = $mysql->query("SELECT `email` FROM `users` WHERE `email` = '$email'");
 if ($email_users->num_rows) {
@@ -23,3 +24,8 @@ if (!$result) {
 }
 // Вернуть клиенту json с данными пользователя
 echo json_encode(['id' => $user_id, 'name' => $name, 'email' => $email, 'token' => $token]);
+// Запись данных пользователя в SESSION
+$_SESSION['user']['id'] = $user_id;
+$_SESSION['user']['name'] = $name;
+$_SESSION['user']['email'] = $email;
+$_SESSION['user']['token'] = $token;

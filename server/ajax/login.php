@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../inc/db_connect';
 // Полученные от пользователя POST параметры
 $email = trim($_POST['email']);
@@ -13,6 +14,8 @@ if ($result->num_rows != 0) {
     $response['status'] = 200;
     // Записываем токен пользователя в ответ
     $response['data'] = $result->fetch_assoc();
+    // Записываем данные пользователя в сессию которая будет храниться на сервере
+    $_SESSION['user'] = $response['data'];
 }
 // Отправить клиенту json строку с токеном пользователя и статусом
 echo json_encode($response);
