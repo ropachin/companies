@@ -1,3 +1,14 @@
+@media (width<=480px) {
+    #company-comments {
+        grid-template-columns: 1fr !important;
+    }
+
+    #company-comments>fieldset {
+        border: none !important;
+        margin-top: 20px;
+    }
+}
+
 #company-title {
     color: var(--logo-color);
     text-align: center;
@@ -8,6 +19,9 @@
 
 #company-details {
     font-size: 18px;
+    border-bottom: 1px groove var(--body-color-bg);
+    padding-bottom: 50px;
+    margin: 0;
 }
 
 #company-details>dt {
@@ -23,4 +37,77 @@
 #company-details>dd::selection {
     background-color: var(--logo-color);
     color: #000;
+}
+
+/* Блок с коментариями */
+#company-comments {
+    display: grid;
+    grid-template-columns: repeat(2, 480px);
+    gap: 30px;
+}
+
+/* Форма для создания коментария */
+#company-comment-form{
+    padding: 10px;
+}
+
+#company-comments>fieldset>textarea {
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+#company-comments>fieldset>input {
+    margin: 10px auto 25px;
+}
+
+/* Надпись над настройками видемости */
+#company-comments>fieldset>input + p{
+    color: #bbb;
+    text-align: center;
+    margin-bottom: 8px;
+    font-style: italic;
+
+}
+
+/* Блок с radio переключателями видемости */
+#company-comments>fieldset>div {
+    display: flex;
+    justify-content: space-around;
+}
+
+#company-comments>fieldset>div>input {
+    display: none;
+}
+
+#company-comments>fieldset>div>input:checked+label {
+    color: var(--logo-color);
+}
+
+.company-comment {
+    border-color: var(--body-color-bg);
+    border-radius: 4px;
+    padding-block: 0;
+}
+
+/* Кто видит коментарий */
+.company-comment-visibility {
+    color: #777;
+}
+
+/* Имя автора коментария */
+.company-comment-name {
+    color: var(--logo-color);
+}
+
+/* Текст коментария */
+.company-comment-text {
+    white-space: break-spaces;
+    font-style: italic;
+}
+
+/* Дата коментария */
+.company-comment-date {
+    color: #777;
+    text-align: end;
+    font-size: .9em;
 }

@@ -161,9 +161,11 @@ textarea::selection {
     background-color: var(--block-color-bg);
     border: none;
     outline: 1px solid transparent;
-    padding: 10px 4%;
+    padding: 10px;
     color: #fff;
     border-radius: 2px;
+    resize: none;
+    width: 100%;
 }
 
 .default-input-text:focus {

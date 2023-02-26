@@ -52,7 +52,6 @@
 
     #new-company-block>form>div>textarea {
         width: 100%;
-        resize: none;
     }
 
     #new-company-block>form>div>button {
