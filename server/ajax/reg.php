@@ -29,3 +29,5 @@ $_SESSION['user']['id'] = $user_id;
 $_SESSION['user']['name'] = $name;
 $_SESSION['user']['email'] = $email;
 $_SESSION['user']['token'] = $token;
+// Создание cookie
+setcookie("token", $token, time() + 3600 * 24 * 365);

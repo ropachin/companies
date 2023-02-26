@@ -16,6 +16,8 @@ if ($result->num_rows != 0) {
     $response['data'] = $result->fetch_assoc();
     // Записываем данные пользователя в сессию которая будет храниться на сервере
     $_SESSION['user'] = $response['data'];
+    // Создание cookie
+    setcookie("token", $response['data']['token'], time() + 3600 * 24 * 365);
 }
 // Отправить клиенту json строку с токеном пользователя и статусом
 echo json_encode($response);

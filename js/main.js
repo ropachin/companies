@@ -35,7 +35,7 @@ function notification(text) {
     SPAN.textContent = text;
     BLOCK.append(LINE, SPAN);
     document.body.append(BLOCK);
-    setTimeout(() => LINE.style.transform = 'none', 10);
+    setTimeout(() => LINE.style.transform = 'none', 100);
     LINE.ontransitionend = () => BLOCK.style.transform = 'translateY(100%)';
     BLOCK.ontransitionend = () => setTimeout(() => BLOCK.remove(), 999);
     notificationAudio.play();
