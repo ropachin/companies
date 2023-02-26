@@ -9,6 +9,8 @@ const MOBILE_MENU_BTN = document.getElementById('mobile-menu-icon');
 const MAIN_NAV = document.getElementById('main-nav');
 // Кнопка "Выйти" (разлогиниться)
 const LOGOUT_BTN = document.getElementById('logout-btn');
+// Звук уведомления
+let notificationAudio = new Audio('/src/audio/notification.mp3');
 
 // Удалить элементы для гостей / авторизованных пользователей
 (localStorage.user)
@@ -36,6 +38,7 @@ function notification(text) {
     setTimeout(() => LINE.style.transform = 'none', 10);
     LINE.ontransitionend = () => BLOCK.style.transform = 'translateY(100%)';
     BLOCK.ontransitionend = () => setTimeout(() => BLOCK.remove(), 999);
+    notificationAudio.play();
 }
 
 // Мобильное меню

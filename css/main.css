@@ -180,7 +180,7 @@ textarea::selection {
 }
 
 .default-input-text:focus {
-    outline-color: var(--logo-color);
+    outline-color: var(--logo-color) !important;
 }
 
 .default-input-text:focus::placeholder {

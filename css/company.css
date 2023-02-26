@@ -60,6 +60,7 @@
 #company-comment-form>textarea {
     border-radius: 10px;
     font-size: 18px;
+    outline: var(--main-border);
 }
 
 #company-comment-form>button {
