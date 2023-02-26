@@ -21,7 +21,7 @@
     font-size: 18px;
     border-bottom: 1px groove var(--body-color-bg);
     padding-bottom: 50px;
-    margin: 0;
+    margin-bottom: 50px;
 }
 
 #company-details>dt {
@@ -51,17 +51,17 @@
     padding: 10px;
 }
 
-#company-comments>fieldset>textarea {
+#company-comment-form>textarea {
     border-radius: 10px;
     font-size: 18px;
 }
 
-#company-comments>fieldset>input {
+#company-comment-form>input {
     margin: 10px auto 25px;
 }
 
 /* Надпись над настройками видемости */
-#company-comments>fieldset>input + p{
+#company-comment-form>input + p{
     color: #bbb;
     text-align: center;
     margin-bottom: 8px;
@@ -70,16 +70,16 @@
 }
 
 /* Блок с radio переключателями видемости */
-#company-comments>fieldset>div {
+#company-comment-form>div {
     display: flex;
     justify-content: space-around;
 }
 
-#company-comments>fieldset>div>input {
+#company-comment-form>div>input {
     display: none;
 }
 
-#company-comments>fieldset>div>input:checked+label {
+#company-comment-form>div>input:checked+label {
     color: var(--logo-color);
 }
 
@@ -87,6 +87,7 @@
     border-color: var(--body-color-bg);
     border-radius: 4px;
     padding-block: 0;
+    position: relative;
 }
 
 /* Кто видит коментарий */
@@ -108,6 +109,8 @@
 /* Дата коментария */
 .company-comment-date {
     color: #777;
-    text-align: end;
     font-size: .9em;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
 }

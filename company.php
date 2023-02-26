@@ -46,7 +46,7 @@ function get_name($user_id)
         </dl>
         <div id="company-comments">
             <fieldset id="company-comment-form" class="company-comment">
-                <legend>Коментарии:</legend>
+                <legend>Новый коментарий:</legend>
                 <textarea class="default-input-text" name="comment" id="company-comment-input" rows="5" placeholder="Вы можете оставить ваш коментарий здесь"></textarea>
                 <input class="default-btn" type="submit" value="Отправить">
                 <p id="comment-form-settings-caption">Кто может читать?</p>
@@ -66,13 +66,13 @@ function get_name($user_id)
                 <?php
                 if ($db['visibility'] == 'all' || $db['visibility'] == 'self') : ?>
                     <fieldset class="company-comment" visibility="<?= $db['visibility'] ?>">
-                        <legend class="company-comment-visibility">
+                        <legend class="company-comment-name"><?= get_name($db['user_id']) ?></legend>
+                        <p class="company-comment-visibility">
                             <?php
                             if ($db['visibility'] == 'all') echo 'Видят все';
                             elseif ($db['visibility'] == 'self') echo 'Вижу только я';
                             ?>
-                        </legend>
-                        <p class="company-comment-name"><?= get_name($db['user_id']) ?></p>
+                        </p>
                         <p class="company-comment-text"><?= $db['text'] ?></p>
                         <p class="company-comment-date"><?= $db['date'] ?></p>
                     </fieldset>
