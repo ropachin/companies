@@ -4,6 +4,20 @@ const VISIBILITYS = new Map([['all', 'Видят все'], ['сolleagues', 'Ко
 const COMPANY_COMMENT_FORM = document.getElementById('company-comment-form');
 // Кнопка "Отправить" коментарий
 const COMPANY_COMMENT_BUTTON = COMPANY_COMMENT_FORM.querySelector('button');
+// Разрешения для выбора параметров видемости
+if (USER.token === undefined) {
+    const VISIBILITY_LIST = COMPANY_COMMENT_FORM.querySelectorAll('input[name=comment_visibility]')
+    for (input of VISIBILITY_LIST) {
+        if (input.value != 'all') {
+            const LABEL = input.nextElementSibling;
+            input.setAttribute('disabled', '');
+            LABEL.setAttribute('title', 'Войдите, что выбрать');
+            LABEL.classList.remove('default-link');
+            LABEL.style.cursor = 'not-allowed';
+            LABEL.style.color = '#555';
+        }
+    }
+}
 // Отправка коментария
 COMPANY_COMMENT_BUTTON.onclick = function (e) {
     // Textarea для коментария
@@ -14,6 +28,7 @@ COMPANY_COMMENT_BUTTON.onclick = function (e) {
         TEXTAREA.focus();
         return;
     }
+    // AJAX
     const XHR = new XMLHttpRequest();
     XHR.open('POST', 'server/ajax/set_comment.php')
     XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -38,6 +53,9 @@ COMPANY_COMMENT_BUTTON.onclick = function (e) {
             DATE_P.textContent = 'Только-что';
             COMMENT.append(LEGEND, VISIBILITY_P, TEXT_P, DATE_P);
             COMPANY_COMMENT_FORM.after(COMMENT);
+            if (document.getElementById('company-no-comments')) {
+                document.getElementById('company-no-comments').remove();
+            }
             TEXTAREA.value = '';
         } else {
             notification('Не удалось создать коментарий');

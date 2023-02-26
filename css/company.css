@@ -18,6 +18,7 @@
     font-weight: normal;
     white-space: pre-wrap;
     font-size: min(8vw, 30px);
+    cursor: default;
 }
 
 #company-details {
@@ -31,6 +32,7 @@
 #company-details>dt {
     margin-top: 20px;
     color: var(--logo-color);
+    cursor: default;
 }
 
 #company-details>dd {
@@ -66,10 +68,11 @@
 
 /* Надпись над настройками видемости */
 #company-comment-form>button+p {
-    color: #bbb;
+    color: #777;
     text-align: center;
-    margin-bottom: 8px;
-    font-style: italic;
+    margin-bottom: 20px;
+    cursor: default;
+    font-size: .9em;
 
 }
 
@@ -87,6 +90,11 @@
     color: var(--logo-color);
 }
 
+/* Надпиьсь, что коментариев ещё нет " */
+#company-no-comments{
+text-align: center;
+}
+
 /* Каждый блок с коментарием */
 .company-comment {
     border: var(--main-border);
@@ -98,11 +106,13 @@
 /* Кто видит коментарий */
 .company-comment-visibility {
     color: #777;
+    cursor: default;
 }
 
 /* Имя автора коментария */
 .company-comment-name {
     color: var(--logo-color);
+    cursor: default;
 }
 
 /* Текст коментария */
@@ -123,4 +133,5 @@
     position: absolute;
     right: 10px;
     bottom: 0;
+    cursor: default;
 }

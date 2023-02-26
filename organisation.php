@@ -9,7 +9,7 @@
 <body>
     <?php require 'inc/header' ?>
     <main>
-
+        <form action=""></form>
     </main>
 </body>
 

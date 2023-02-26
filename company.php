@@ -60,7 +60,7 @@ function get_name($user_id)
                 </div>
             </fieldset>
             <?php if ($comments->num_rows == 0) : ?>
-                <p>К этой компании нет коментариев</p>
+                <p id="company-no-comments">К этой компании нет коментариев</p>
             <?php endif ?>
             <?php while ($db = $comments->fetch_assoc()) : ?>
                 <?php

@@ -219,6 +219,7 @@ SHOW_ALL_COMPANIES_BTN.onclick = show_all_companies;
 const COMMENT_DIALOG = document.getElementById('comment-dialog');
 const COMMENT_COMPANY_NAME = COMMENT_DIALOG.querySelector('h3');
 const COMMENT_TEXTAREA = COMMENT_DIALOG.querySelector('textarea');
+const VISIBILITY_LIST = COMMENT_DIALOG.querySelectorAll('input[name=comment_visibility]');
 const COMMENT_CLOSE_BTN = document.getElementById('comment-close-btn');
 const COMMENT_SUBMIT_BTN = document.getElementById('comment-submit-btn');
 
@@ -236,6 +237,19 @@ function add_comment(company_id, name) {
         COMMENT_TEXTAREA.value = '';
         // Закрыть окно
         COMMENT_DIALOG.close();
+    }
+    // Разрешения для выбора параметров видемости
+    if (USER.token === undefined) {
+        for (input of VISIBILITY_LIST) {
+            if (input.value != 'all') {
+                const LABEL = input.nextElementSibling;
+                input.setAttribute('disabled', '');
+                LABEL.setAttribute('title', 'Войдите, что выбрать');
+                LABEL.classList.remove('default-link');
+                LABEL.style.cursor = 'not-allowed';
+                LABEL.style.color = '#555';
+            }
+        }
     }
     // Кнопка "Отправить"
     COMMENT_SUBMIT_BTN.onclick = function () {
