@@ -16,7 +16,7 @@
             <span class="default-link hidden" id="mobile-search-btn">Поиск</span>
         <?php endif ?>
         <a href="/" class="default-link">Компании</a>
-        <a href="#" class="default-link">Моя организация</a>
+        <a href="/organisation.php" class="default-link">Моя организация</a>
         <a href="/auth.php" class="default-link only-guest-visible">Войти</a>
         <a href="/auth.php?reg=on" class="default-link only-guest-visible">Зарегестрироваться</a>
         <span class="default-link only-user-visible" id="logout-btn">Выйти</span>

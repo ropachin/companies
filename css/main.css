@@ -78,6 +78,16 @@
     background-color: transparent;
 }
 
+body::-webkit-scrollbar {
+    background-image: var(--header-color-bg);
+    width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--logo-color);
+    border-radius: 4px;
+}
+
 input::selection,
 textarea::selection {
     background-color: var(--logo-color);
@@ -110,6 +120,7 @@ textarea::selection {
     transition: all 5s linear;
     background-color: var(--logo-color);
     transform: scaleX(0);
+    box-shadow: 0 0 6px 0 var(--logo-color);
 }
 
 #main-notification>span {
