@@ -15,11 +15,11 @@
         border-radius: 0 !important;
     }
 
-    #header-search-icon{
+    #header-search-icon {
         display: none;
     }
 
-    #mobile-search-btn{
+    #mobile-search-btn {
         display: block !important;
     }
 
@@ -49,7 +49,7 @@
     text-align: center;
 }
 
-#index-control-panel>*{
+#index-control-panel>* {
     display: inline-block;
     margin-inline: 10px;
 }
@@ -127,6 +127,7 @@
     height: 50px;
     background: url('/src/svg/search-icon.svg') center no-repeat;
     position: relative;
+    float: left;
 }
 
 #header-search-icon:hover div {

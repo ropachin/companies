@@ -6,20 +6,45 @@
     --logo-dark-color: #ffb300;
 }
 
-@media(width<800px) {
+@media(width<920px) {
     #header-logo {
         display: none;
     }
 }
 
-@media(width<480px) {
+@media(width<=480px) {
 
     .default-btn,
     .default-link {
         cursor: context-menu !important;
     }
 
+    #mobile-menu-icon {
+        background: url('/src/svg/mobile-menu.svg') no-repeat !important;
+        background-size: contain !important;
+        width: 50px !important;
+        position: relative;
+        z-index: 3;
+        transition: filter 200ms;
+    }
+
     header>nav {
+        display: none !important;
+    }
+
+    header::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        background-color: var(--header-color-bg);
+
+    }
+
+    #main-nav {
         display: grid !important;
         position: absolute;
         z-index: 1;
@@ -28,12 +53,19 @@
         right: 0;
         background-color: var(--body-color-bg);
         box-shadow: 0 1px 6px var(--header-color-bg);
+        transition: transform 200ms linear;
+        line-height: 50px;
+        transform: translateY(-100%);
     }
 
-    header>nav>* {
+    #main-nav>* {
         padding: 0 10px;
         border-bottom: 2px groove var(--block-color-bg);
         margin: 0 !important;
+    }
+
+    #main-nav>*:last-child {
+        border: none;
     }
 }
 
@@ -167,6 +199,8 @@ header {
     height: 50px;
     line-height: 50px;
     padding: 0 1%;
+    position: relative;
+    z-index: 3;
 }
 
 /* Лого */
@@ -185,13 +219,11 @@ header {
     font-weight: 600;
 }
 
-/* Элементы в правой части шапки */
-header>nav {
-    display: flex;
+header>nav>{
+    transform: translateY(0);
 }
 
 /* Каждый кликабельный элемент в правой части шапки*/
 header>nav>* {
-    cursor: pointer;
     margin-inline: 6px;
 }

@@ -1,6 +1,7 @@
 <header>
     <span id="header-logo">ТЕСТОВОЕ <span>ЗАД</span>АНИЕ</span>
-    <nav>
+    <div id="mobile-menu-icon"></div>
+    <nav id="main-nav">
         <!-- Если текущая страница главная: -->
         <?php if (str_contains($_SERVER['SCRIPT_NAME'], 'index')) : ?>
             <div id="header-search-icon">

@@ -3,6 +3,10 @@
 const ONLY_GUEST = document.querySelectorAll('.only-guest-visible');
 // List элементов только для авторизованных пользователей
 const ONLY_USER = document.querySelectorAll('.only-user-visible');
+// Кнопка меню для мобильного
+const MOBILE_MENU_BTN = document.getElementById('mobile-menu-icon');
+// Меню nav
+const MAIN_NAV = document.getElementById('main-nav');
 // Кнопка "Выйти" (разлогиниться)
 const LOGOUT_BTN = document.getElementById('logout-btn');
 
@@ -19,6 +23,25 @@ LOGOUT_BTN.onclick = function () {
     location.reload();
 }
 
+// При изменении размера окна
+// window.onresize = function () {
+//     if (window.innerWidth <= 480) {
+//         // Удалить nav из header
+//         MAIN_NAV.remove();
+//         // вставить nav в body
+//         document.body.append(MAIN_NAV);
+//         // класс для мобильного nav
+//         MAIN_NAV.classList.add('mobile-nav');
+//     } else {
+//         // Удалить nav из body
+//         MAIN_NAV.remove();
+//         // Поместить nav в header
+//         document.querySelector('header').append(MAIN_NAV);
+//         // Удалить класс мобильного nav
+//         MAIN_NAV.classList.remove('mobile-nav');
+//     }
+// }
+
 // Функция - показать уведомление
 function notification(text) {
     if (document.getElementById('main-notification')) return;
@@ -32,4 +55,32 @@ function notification(text) {
     setTimeout(() => LINE.style.transform = 'none', 1);
     LINE.ontransitionend = () => BLOCK.style.transform = 'translateY(100%)';
     BLOCK.ontransitionend = () => setTimeout(() => BLOCK.remove(), 999);
+}
+
+// Мобильное меню
+let mobileMenuFlag = false;
+MOBILE_MENU_BTN.onclick = function () {
+    if (!mobileMenuFlag) {
+        // Опустить меню
+        MAIN_NAV.style.transform = 'translateY(0)';
+        // Стиль зажатой кнопки
+        MOBILE_MENU_BTN.style.filter = 'grayscale(1) brightness(0.5)';
+        // Переключить флаг
+        mobileMenuFlag = true;
+        // Закрыть при щелчке ниже чем меню
+        document.onclick = e => {
+            if (e.y > MAIN_NAV.clientHeight) {
+                MAIN_NAV.style.transform = 'translateY(-100%)';
+                mobileMenuFlag = false;
+            }
+        }
+    }
+    else {
+        // Поднять меню
+        MAIN_NAV.style.transform = 'translateY(-100%)';
+        // Убрать стиль зажатой кнопки
+        MOBILE_MENU_BTN.style.filter = "none";
+        // Переключить флаг
+        mobileMenuFlag = false;
+    }
 }
