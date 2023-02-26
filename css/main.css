@@ -74,8 +74,14 @@
 }
 
 /* Убираем выделение всех текстовых элементов */
-*::selection:not(input) {
+*::selection:not(input, textarea) {
     background-color: transparent;
+}
+
+input::selection,
+textarea::selection {
+    background-color: var(--logo-color);
+    color: #000;
 }
 
 .hidden {
@@ -219,7 +225,7 @@ header {
     font-weight: 600;
 }
 
-header>nav>{
+header>nav> {
     transform: translateY(0);
 }
 

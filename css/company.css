@@ -1,8 +1,9 @@
 #company-title {
-    letter-spacing: 1px;
     color: var(--logo-color);
     text-align: center;
     font-weight: normal;
+    white-space: pre-wrap;
+    font-size: min(8vw, 30px);
 }
 
 #company-details {
