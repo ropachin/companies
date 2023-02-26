@@ -244,7 +244,7 @@ function add_comment(company_id, name) {
             if (input.value != 'all') {
                 const LABEL = input.nextElementSibling;
                 input.setAttribute('disabled', '');
-                LABEL.setAttribute('title', 'Войдите, что выбрать');
+                LABEL.setAttribute('title', 'Войдите в свой аккаунт, что-бы выбрать');
                 LABEL.classList.remove('default-link');
                 LABEL.style.cursor = 'not-allowed';
                 LABEL.style.color = '#555';
@@ -297,7 +297,7 @@ function add_comment(company_id, name) {
 async function new_company() {
     // Загрузить и показать форму
     const FORM = new loadHTML;
-    await FORM.load('https://test-website.cf/inc/new_company');
+    await FORM.load('/inc/new_company');
 
     // Скрипт формы
     // Родительский блок с формой

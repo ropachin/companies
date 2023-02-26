@@ -8,7 +8,7 @@
 }
 
 /* Защитное правило для фирменного цвета сайта */
-@property --logo-color{
+@property --logo-color {
     inherits: false;
     syntax: '<color>';
     initial-value: #ffc134;
@@ -49,7 +49,6 @@
         bottom: 0;
         z-index: 2;
         background-color: var(--header-color-bg);
-
     }
 
     #main-nav {
@@ -74,6 +73,10 @@
 
     #main-nav>*:last-child {
         border: none;
+    }
+
+    .auth-link{
+        background-image: none !important;
     }
 }
 
@@ -253,4 +256,13 @@ header>nav> {
 /* Каждый кликабельный элемент в правой части шапки*/
 header>nav>* {
     margin-inline: 6px;
+}
+
+/* Кнопка "Войти" */
+.auth-link {
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-size: 18px;
+    background-position-y: center;
+    padding-right: 20px;
 }

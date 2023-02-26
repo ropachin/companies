@@ -11,7 +11,7 @@ if (USER.token === undefined) {
         if (input.value != 'all') {
             const LABEL = input.nextElementSibling;
             input.setAttribute('disabled', '');
-            LABEL.setAttribute('title', 'Войдите, что выбрать');
+            LABEL.setAttribute('title', 'Войдите в свой аккаунт, что-бы выбрать');
             LABEL.classList.remove('default-link');
             LABEL.style.cursor = 'not-allowed';
             LABEL.style.color = '#555';
