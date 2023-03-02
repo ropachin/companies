@@ -1,0 +1,26 @@
+#organisation-user-id {
+    background-color: var(--logo-color);
+    color: black;
+    padding: 3px 6px;
+    border-radius: 50%;
+    font-size: 22px;
+    margin-left: 10px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+#organisation-form {
+    width: min(480px, 100%);
+    border-radius: 10px;
+    border-color: var(--block-color-bg);
+    padding: 10px
+}
+
+#organisation-form>legend {
+    text-align: center;
+    color: var(--logo-color);
+}
+
+#organisation-form>button {
+    margin: 20px auto 0;
+}

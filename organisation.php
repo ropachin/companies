@@ -3,6 +3,7 @@
 
 <head>
     <?php require 'inc/head_inc' ?>
+    <link rel="stylesheet" href="/css/organisation.css">
     <title>Организация</title>
 </head>
 
@@ -11,14 +12,15 @@
     <?php if (!isset($_COOKIE['token'], $_COOKIE['organisation'])) : ?>
         <main>
             <p>Вы не состоите в организации</p>
-            <p>Попросите друзей отправить отправить вам приглашение по вашему id: <b>55</b></p>
+            <p>Попросите друзей отправить отправить вам приглашение по вашему id:
+                <span id="organisation-user-id">55</span>
+            </p>
             <p>Или создайте новую:</p>
-            <form action="" style="width: min(480px, 100%)">
-                <fieldset>
-                    <legend>Новая организация</legend>
-                    <input type="text" class="default-input-text" placeholder="Имя организации" required>
-                </fieldset>
-            </form>
+            <fieldset id="organisation-form">
+                <legend>Новая организация</legend>
+                <input type="text" class="default-input-text" placeholder="Имя организации" minlength="2" maxlength="50" required>
+                <button type="button" class="default-btn">Создать</button>
+            </fieldset>
         </main>
     <?php else : ?>
         <!-- проверка на админа организации -->
