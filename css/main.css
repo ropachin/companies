@@ -176,7 +176,7 @@ textarea::selection {
 }
 
 .default-link:hover {
-    color: #fff;
+    color: #fff !important;
 }
 
 .default-input-text {

@@ -21,6 +21,10 @@ body {
     width: max-content;
     text-align: center;
     width: 300px;
+    border: 1px solid var(--logo-dark-color);
+    padding: 10px 20px;
+    box-sizing: content-box;
+    border-radius: 35px;
 }
 
 /* блок с input элементами */

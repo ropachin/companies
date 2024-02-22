@@ -4,6 +4,7 @@
 <head>
     <?php require 'inc/head_inc' ?>
     <link rel="stylesheet" href="/css/organisation.css">
+    <script src="/js/organisation.js" defer></script>
     <title>Организация</title>
 </head>
 
@@ -15,11 +16,13 @@
             <p>Попросите друзей отправить отправить вам приглашение по вашему id:
                 <span id="organisation-user-id">55</span>
             </p>
-            <p>Или создайте новую:</p>
+            <p>Или <span id="org-form-show-btn" class="default-link">создайте</span> новую...</p>
             <fieldset id="organisation-form">
                 <legend>Новая организация</legend>
                 <input type="text" class="default-input-text" placeholder="Имя организации" minlength="2" maxlength="50" required>
-                <button type="button" class="default-btn">Создать</button>
+                <br>
+                <button type="button" class="default-btn" onclick="org_create()">Создать</button>
+                <button type="reset" class="default-btn" onclick="org_hide_form()">Скрыть</button>
             </fieldset>
         </main>
     <?php else : ?>
